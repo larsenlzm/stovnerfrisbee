@@ -15,6 +15,34 @@
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		--color-bg: #0D1812;
+		--color-surface: #162112;
+		--color-surface-2: #1C2E1F;
+		--color-primary: #4CAF7D;
+		--color-primary-dark: #3D9B6A;
+		--color-accent: #E8784A;
+		--color-accent-dark: #D4622A;
+		--color-text: #E2F0E8;
+		--color-muted: #7FA894;
+		--color-border: #2A4035;
+	}
+}
+
+[data-theme="dark"] {
+	--color-bg: #0D1812;
+	--color-surface: #162112;
+	--color-surface-2: #1C2E1F;
+	--color-primary: #4CAF7D;
+	--color-primary-dark: #3D9B6A;
+	--color-accent: #E8784A;
+	--color-accent-dark: #D4622A;
+	--color-text: #E2F0E8;
+	--color-muted: #7FA894;
+	--color-border: #2A4035;
+}
+
 html {
 	scroll-behavior: smooth;
 }

@@ -2,6 +2,10 @@
 <html lang="no">
 	<head>
 		<meta charset="utf-8" />
+		<script>
+			const saved = localStorage.getItem('theme');
+			if (saved) document.documentElement.setAttribute('data-theme', saved);
+		</script>
 		<link rel="icon" href="%sveltekit.assets%/stovnerlogo.jpg" type="image/jpeg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Stovner Frisbeeklubb — En discgolfperle nord i Groruddalen siden 1985." />
