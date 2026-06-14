@@ -28,10 +28,10 @@
 
 <nav class="fixed top-0 left-0 right-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur-sm">
 	<div class="mx-auto max-w-6xl px-4">
-		<div class="flex h-16 items-center justify-between">
+		<div class="flex h-[72px] items-center justify-between">
 			<!-- Logo -->
 			<a href="/" class="flex items-center gap-3 font-bold text-[var(--color-text)] hover:opacity-80 transition-opacity" onclick={closeMenu}>
-				<img src="/stovnerlogo.jpg" alt="Stovner Frisbee logo" width="40" height="40" class="rounded-full" />
+				<img src="/stovnerlogo.jpg" alt="Stovner Frisbee logo" width="52" height="52" class="rounded-full" />
 				<span class="text-sm leading-tight">
 					<span class="block text-base font-bold">Stovner</span>
 					<span class="block text-xs font-normal text-[var(--color-muted)]">Frisbeeklubb</span>
@@ -42,15 +42,24 @@
 			<ul class="hidden md:flex items-center gap-1">
 				{#each navLinks as link}
 					<li>
-						<a
-							href={link.href}
-							class="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-[var(--color-primary)]
-								{$page.url.pathname === link.href
-									? 'text-[var(--color-primary)]'
-									: 'text-[var(--color-muted)]'}"
-						>
-							{link.label}
-						</a>
+						{#if link.cta}
+							<a
+								href={link.href}
+								class="ml-2 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
+							>
+								{link.label}
+							</a>
+						{:else}
+							<a
+								href={link.href}
+								class="rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-[var(--color-primary)]
+									{$page.url.pathname === link.href
+										? 'text-[var(--color-primary)]'
+										: 'text-[var(--color-muted)]'}"
+							>
+								{link.label}
+							</a>
+						{/if}
 					</li>
 				{/each}
 				<li>
@@ -75,9 +84,16 @@
 				</li>
 			</ul>
 
-			<!-- Mobile hamburger -->
+			<!-- Mobile: CTA + hamburger -->
+			<div class="md:hidden flex items-center gap-2">
+				<a
+					href="/bli-medlem"
+					class="rounded-lg bg-[var(--color-accent)] px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
+				>
+					Bli medlem
+				</a>
 			<button
-				class="md:hidden flex flex-col gap-1.5 p-2 text-[var(--color-text)]"
+				class="flex flex-col gap-1.5 p-2 text-[var(--color-text)]"
 				onclick={() => (menuOpen = !menuOpen)}
 				aria-label="Toggle meny"
 			>
@@ -94,16 +110,26 @@
 			<ul class="flex flex-col gap-1">
 				{#each navLinks as link}
 					<li>
-						<a
-							href={link.href}
-							onclick={closeMenu}
-							class="block rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)] hover:text-[var(--color-primary)]
-								{$page.url.pathname === link.href
-									? 'text-[var(--color-primary)] bg-[var(--color-surface-2)]'
-									: 'text-[var(--color-muted)]'}"
-						>
-							{link.label}
-						</a>
+						{#if link.cta}
+							<a
+								href={link.href}
+								onclick={closeMenu}
+								class="mt-1 block rounded-lg bg-[var(--color-accent)] px-3 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
+							>
+								{link.label}
+							</a>
+						{:else}
+							<a
+								href={link.href}
+								onclick={closeMenu}
+								class="block rounded-md px-3 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--color-surface-2)] hover:text-[var(--color-primary)]
+									{$page.url.pathname === link.href
+										? 'text-[var(--color-primary)] bg-[var(--color-surface-2)]'
+										: 'text-[var(--color-muted)]'}"
+							>
+								{link.label}
+							</a>
+						{/if}
 					</li>
 				{/each}
 				<li>
@@ -129,4 +155,5 @@
 			</ul>
 		</div>
 	{/if}
+	</div>
 </nav>

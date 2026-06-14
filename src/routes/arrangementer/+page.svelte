@@ -1,6 +1,10 @@
 <script lang="ts">
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { events } from '$lib/data/content';
+
+	const today = new Date().toISOString().slice(0, 10);
+	const upcoming = events.filter(e => !e.endDate || e.endDate >= today);
+	const ended = events.filter(e => e.endDate && e.endDate < today);
 </script>
 
 <svelte:head>
@@ -16,11 +20,29 @@
 </section>
 
 <section class="mx-auto max-w-6xl px-4 py-16">
+	<h2 class="mb-6 text-xl font-semibold text-[var(--color-text)]">
+		Kommende
+		<span class="ml-2 rounded-full bg-[var(--color-primary)]/10 px-2.5 py-0.5 text-sm font-medium text-[var(--color-primary)]">{upcoming.length}</span>
+	</h2>
 	<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-		{#each events as event}
+		{#each upcoming as event}
 			<EventCard {...event} />
 		{/each}
 	</div>
+
+	{#if ended.length > 0}
+		<div class="mt-16">
+			<div class="mb-6 flex items-center gap-4">
+				<h2 class="text-xl font-semibold text-[var(--color-muted)]">Avsluttede</h2>
+				<div class="h-px flex-1 bg-[var(--color-border)]"></div>
+			</div>
+			<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+				{#each ended as event}
+					<EventCard {...event} ended />
+				{/each}
+			</div>
+		</div>
+	{/if}
 
 	<!-- External platforms note -->
 	<div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">

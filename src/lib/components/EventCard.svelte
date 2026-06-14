@@ -6,9 +6,10 @@
 		link: string;
 		linkText: string;
 		category: string;
+		ended?: boolean;
 	}
 
-	let { title, date, description, link, linkText, category }: Props = $props();
+	let { title, date, description, link, linkText, category, ended = false }: Props = $props();
 
 	const tagStyles: Record<string, string> = {
 		'Ukentlig':  'bg-[#1C6B42]/12 text-[#1C6B42]',
@@ -18,18 +19,23 @@
 		'DOUBLES':   'bg-[#1A7A72]/12 text-[#1A7A72]',
 	};
 
-	const tags = category.split(',').map(t => t.trim()).filter(Boolean);
+	const tags = $derived(category.split(',').map(t => t.trim()).filter(Boolean));
 
 	function tagClass(tag: string): string {
 		return tagStyles[tag] ?? 'bg-[var(--color-surface-2)] text-[var(--color-muted)]';
 	}
 </script>
 
-<div class="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors hover:border-[var(--color-primary)]/40">
+<div class="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors {ended ? 'opacity-60' : 'hover:border-[var(--color-primary)]/40'}">
 	<div class="mb-3 flex items-start justify-between gap-2">
 		<div class="flex flex-wrap gap-1.5">
+			{#if ended}
+				<span class="inline-block rounded-full px-3 py-1 text-xs font-medium bg-[var(--color-surface-2)] text-[var(--color-muted)]">
+					Avsluttet
+				</span>
+			{/if}
 			{#each tags as tag}
-				<span class="inline-block rounded-full px-3 py-1 text-xs font-medium {tagClass(tag)}">
+				<span class="inline-block rounded-full px-3 py-1 text-xs font-medium {ended ? 'bg-[var(--color-surface-2)] text-[var(--color-muted)]' : tagClass(tag)}">
 					{tag}
 				</span>
 			{/each}
@@ -38,15 +44,19 @@
 	</div>
 	<h3 class="mb-2 text-lg font-semibold text-[var(--color-text)]">{title}</h3>
 	<p class="mb-5 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">{description}</p>
-	<a
-		href={link}
-		target="_blank"
-		rel="noopener noreferrer"
-		class="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition-colors"
-	>
-		{linkText}
-		<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-			<path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-		</svg>
-	</a>
+	{#if ended}
+		<span class="text-sm text-[var(--color-muted)]">Arrangementet er avsluttet</span>
+	{:else}
+		<a
+			href={link}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition-colors"
+		>
+			{linkText}
+			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+				<path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+		</a>
+	{/if}
 </div>
