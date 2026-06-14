@@ -18,12 +18,13 @@
 			<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Hvorfor bli medlem?</h2>
 			<ul class="space-y-6">
 				{#each [
-					{ title: 'Delta i turneringer', desc: 'Spill i torsdagsgolf, vårliga og Stovner Open med rabatterte deltakerpriser.' },
-					{ title: 'Lån utstyr fra klubben', desc: 'Klubben har discer og utstyr du kan låne — perfekt for nybegynnere eller om du vil prøve nye flyvekurver.' },
-					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },
+					{ title: 'Delta i turneringer', desc: 'Vi arrangerer ligaspill, turnerninger og lavterskel arrangementer.' },
 					{ title: 'Støtt banene', desc: 'Medlemskontingenten går direkte til vedlikehold og utvikling av banene våre.' },
 					{ title: 'Fellesskap', desc: 'Bli en del av oss — et godt miljø med discgolfentusiaster i Groruddalen.' },
-					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' }
+					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },	
+					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' },
+					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },
+					{ title: 'Lån utstyr fra klubben', desc: 'Klubben har mye utstyr du kan låne, alt fra verktøy, stoler, telt til techdisc.' },
 				] as benefit}
 					<li class="flex gap-4">
 						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/15 text-[var(--color-primary)]">

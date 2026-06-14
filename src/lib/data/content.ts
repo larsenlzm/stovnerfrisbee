@@ -34,7 +34,7 @@ export const courses = [
 		tees: 'Kunstgress',
 		amenities: { dogs: true, cart: false, stroller: false, restrooms: false, water: false },
 		udiscLink: 'https://udisc.com/courses/forsheimer-discgolf-park-2023-NtdI',
-		coords: { lat: 59.967007, lng: 10.915872 }
+		coords: { lat: 59.957847, lng: 10.9149 }
 	}
 ];
 
