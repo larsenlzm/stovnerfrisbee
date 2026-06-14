@@ -2,6 +2,9 @@
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { events } from '$lib/data/content';
 
+	const today = new Date().toISOString().slice(0, 10);
+	const upcomingEvents = events.filter(e => !e.endDate || e.endDate >= today);
+
 	const quickLinks = [
 		{
 			href: '/om-klubben',
@@ -42,10 +45,10 @@
 
 <!-- Hero -->
 <section class="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden px-4 text-center">
-	<!-- Background gradient -->
+	<!-- Background image + overlay -->
 	<div class="pointer-events-none absolute inset-0">
-		<div class="absolute inset-0 bg-gradient-to-b from-[var(--color-surface)] to-[var(--color-bg)]"></div>
-		<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[var(--color-primary)]/8 blur-3xl"></div>
+		<img src="/homepagebanner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65"></div>
 	</div>
 
 	<div class="relative z-10 max-w-3xl">
@@ -54,13 +57,13 @@
 			<img src="/stovnerlogo.jpg" alt="Stovner Frisbee" width="120" height="120" class="rounded-full shadow-md" />
 		</div>
 
-		<h1 class="mb-4 text-4xl font-bold tracking-tight text-[var(--color-text)] sm:text-5xl md:text-6xl">
-			Stovner<br/><span class="text-[var(--color-primary)]">Frisbeeklubb</span>
+		<h1 class="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+			Stovner<br/><span class="text-[var(--color-primary-light,#7dd3fc)]">Frisbeeklubb</span>
 		</h1>
-		<p class="mb-3 text-xl font-medium text-[var(--color-muted)] sm:text-2xl">
+		<p class="mb-3 text-xl font-medium text-white/80 sm:text-2xl">
 			En discgolfperle nord i Groruddalen
 		</p>
-		<p class="mb-10 text-base text-[var(--color-muted)]/80">
+		<p class="mb-10 text-base text-white/60">
 			Stiftet 1985 · En av Norges eldste discidrettsklubber
 		</p>
 
@@ -75,7 +78,7 @@
 				</a>
 				<a
 					href="/arrangementer"
-					class="rounded-lg border border-[var(--color-primary)]/50 px-8 py-3.5 text-base font-semibold text-[var(--color-primary)] transition-all hover:bg-[var(--color-primary)]/10 hover:border-[var(--color-primary)]"
+					class="rounded-lg border border-white/50 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white"
 				>
 					Kommende arrangementer
 				</a>
@@ -83,7 +86,7 @@
 			<!-- Rad 2: ghost-lenke -->
 			<a
 				href="/banene"
-				class="text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
+				class="text-sm font-medium text-white/70 transition-colors hover:text-white"
 			>
 				Se banene →
 			</a>
@@ -91,7 +94,7 @@
 	</div>
 
 	<!-- Scroll hint -->
-	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-muted)]/50">
+	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
 		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
 			<path d="M4 7L10 13L16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>
@@ -128,9 +131,28 @@
 		</a>
 	</div>
 	<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-		{#each events as event}
+		{#each upcomingEvents as event}
 			<EventCard {...event} />
 		{/each}
+	</div>
+</section>
+
+<!-- Grasrotandelen callout -->
+<section class="mx-auto max-w-6xl px-4 py-4">
+	<div class="flex items-center gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-4">
+		<img src="/norsktipping.jpg" alt="Norsk Tipping" width="48" height="48" class="shrink-0 rounded" />
+		<div class="min-w-0 flex-1">
+			<p class="text-sm font-semibold text-[var(--color-text)]">Støtt oss via Grasrotandelen</p>
+			<p class="text-sm text-[var(--color-muted)]">7 % av ditt Norsk Tipping-spill går rett til klubben — gratis for deg.</p>
+		</div>
+		<a
+			href="https://www.norsk-tipping.no/grasrotandelen/din-mottaker/894417382"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="shrink-0 text-sm font-medium text-[var(--color-primary)] hover:underline"
+		>
+			Velg oss ↗
+		</a>
 	</div>
 </section>
 

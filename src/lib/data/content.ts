@@ -34,7 +34,7 @@ export const courses = [
 		tees: 'Kunstgress',
 		amenities: { dogs: true, cart: false, stroller: false, restrooms: false, water: false },
 		udiscLink: 'https://udisc.com/courses/forsheimer-discgolf-park-2023-NtdI',
-		coords: { lat: 59.967007, lng: 10.915872 }
+		coords: { lat: 59.957847, lng: 10.9149 }
 	}
 ];
 
@@ -51,15 +51,17 @@ export const events = [
 	{
 		title: 'Vårligaen 2026',
 		date: 'Onsdager 29. apr – 17. jun',
+		endDate: '2026-06-17',
 		description:
 			'8 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
-		link: 'https://tjing.se/tour/3fa54bea-456c-4e48-b75c-6748ad2a1b00/',                                                                                                                                               
-        linkText: 'Påmelding via Tjing',
+		link: 'https://tjing.se/tour/3fa54bea-456c-4e48-b75c-6748ad2a1b00/',
+		linkText: 'Påmelding via Tjing',
 		category: 'Ukentlig, PDGA'
 	},
 	{
 		title: 'Stovner Open 2026',
 		date: '30.–31. mai 2026',
+		endDate: '2026-05-31',
 		description:
 			'Årets store turnering på hjemmebanen — PDGA C-tier.',
 		link: 'https://www.discgolfscene.com/tournaments/Stovner_Open_2026',
@@ -69,6 +71,7 @@ export const events = [
 	{
 		title: 'ODGC Flex Start Stovner',
 		date: '15. juni 2026',
+		endDate: '2026-06-15',
 		description:
 			'Flex start-turnering på Stovner arrangert av ODGC. Passer godt for å teste formen midt i sesongen.',
 		link: 'https://www.discgolfscene.com/tournaments/ODGC_Flex_Start_Stovner_2026',
@@ -78,6 +81,7 @@ export const events = [
 	{
 		title: 'Oslo Disc Golf Classic 2026',
 		date: '20.–21. juni 2026',
+		endDate: '2026-06-21',
 		description:
 			'PDGA B-tier presentert av MVP Disc Sports og Team Nordisc. En runde spilles på Stovner Discgolfpark, en runde på Holmenkollen.',
 		link: 'https://www.discgolfscene.com/tournament/Nordisc_Tour_3rd_annual_Oslo_Disc_Golf_Classic_2026',
@@ -87,6 +91,7 @@ export const events = [
 	{
 		title: 'Stovner Doubles 2026',
 		date: '25. juli 2026',
+		endDate: '2026-07-25',
 		description:
 			'Doubles-turnering på Stovner. Finn deg en partner og still til start i sommervarmen!',
 		link: 'https://www.discgolfscene.com/tournaments/Stovner_Doubles_2026',
@@ -96,6 +101,7 @@ export const events = [
 	{
 		title: 'HyzerTour Stovner 2026',
 		date: '22.–23. august 2026',
+		endDate: '2026-08-23',
 		description:
 			'PDGA C-tier presentert av HyzerShop.no. En av de store sommerturneringene på Stovner Discgolfpark.',
 		link: 'https://www.discgolfscene.com/tournaments/HyzerTour_Stovner_2026_presented_by_HyzerShop_no',
@@ -107,7 +113,7 @@ export const events = [
 export const boardMembers = [
 	{ name: 'Herman Walther', role: 'Leder', email: 'leder@stovnerfrisbee.no' },
 	{ name: 'Amund Alstad', role: 'Nestleder', email: '' },
-	{ name: 'Henrik Broum', role: 'Styremedlem', email: '' },
+	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no' },
 	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '' },
 	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '' },
 	{ name: 'Elias Larsen', role: 'Styremedlem', email: '' }
@@ -121,10 +127,9 @@ export const socialLinks = [
 ];
 
 export const navLinks = [
-	{ href: '/', label: 'Hjem' },
-	{ href: '/om-klubben', label: 'Om klubben' },
+{ href: '/om-klubben', label: 'Om klubben' },
 	{ href: '/banene', label: 'Banene' },
 	{ href: '/arrangementer', label: 'Arrangementer' },
-	{ href: '/bli-medlem', label: 'Bli medlem' },
-	{ href: '/kontakt', label: 'Kontakt' }
+	{ href: '/kontakt', label: 'Kontakt' },
+	{ href: '/bli-medlem', label: 'Bli medlem', cta: true }
 ];
