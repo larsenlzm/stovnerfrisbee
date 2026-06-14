@@ -2,26 +2,89 @@
 	<title>Bli medlem · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">
-	<div class="mx-auto max-w-6xl">
-		<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Medlemskap</p>
-		<h1 class="text-3xl font-bold text-[var(--color-text)] md:text-4xl">Bli medlem</h1>
-		<p class="mt-3 text-[var(--color-muted)]">Meld deg inn og spill med oss</p>
+<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+	<div class="relative h-72">
+		<img src="/wulf.jpg" alt="Stovner Frisbeeklubb" class="absolute inset-0 w-full h-full object-cover object-center" />
+		<div class="absolute inset-0 bg-black/50"></div>
+		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
+			<div>
+				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Medlemskap</p>
+				<h1 class="text-3xl font-bold text-white md:text-4xl">Bli medlem</h1>
+				<p class="mt-3 text-white/70">Meld deg inn og spill med oss</p>
+			</div>
+		</div>
 	</div>
 </section>
 
 <!-- Benefits + How to join -->
 <section class="mx-auto max-w-6xl px-4 py-16">
 	<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-		<!-- Benefits -->
-		<div>
+		<!-- How to join (first on mobile, right on desktop) -->
+		<div class="order-first lg:order-last">
+			<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Slik melder du deg inn</h2>
+
+			<div class="space-y-4">
+				<!-- Spond signup -->
+				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+					<h3 class="mb-3 font-semibold text-[var(--color-text)]">Meld deg inn via Spond</h3>
+					<p class="mb-4 text-sm text-[var(--color-muted)]">
+						Innmelding skjer via Spond. Betalingskrav sendes gjennom Spond-appen etter registrering.
+					</p>
+					<a
+						href="https://club.spond.com/landing/signup/sfrisbeek"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
+					>
+						Meld deg inn på Spond ↗
+					</a>
+				</div>
+
+				<!-- Pricing -->
+				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+					<h3 class="mb-4 font-semibold text-[var(--color-text)]">Medlemskontingent</h3>
+					<div class="space-y-3">
+						<div class="flex items-center justify-between rounded-lg border border-[var(--color-border)] px-4 py-3">
+							<span class="text-sm font-semibold text-[var(--color-text)]">Seniormedlem</span>
+							<span class="font-bold text-[var(--color-text)]">Kr 500,-</span>
+						</div>
+						<div class="flex items-center justify-between rounded-lg border border-[var(--color-border)] px-4 py-3">
+							<span class="text-sm font-semibold text-[var(--color-text)]">Juniormedlem</span>
+							<span class="font-bold text-[var(--color-text)]">Kr 100,-</span>
+						</div>
+						<div class="flex items-center justify-between rounded-lg border border-[var(--color-border)] px-4 py-3">
+							<span class="text-sm font-semibold text-[var(--color-text)]">Støttemedlem</span>
+							<span class="font-bold text-[var(--color-text)]">Kr 100,-</span>
+						</div>
+					</div>
+					<p class="mt-3 text-xs text-[var(--color-muted)]">Senior og junior betaler i tillegg kr 105,- i NAIF-kontingent til Norges Frisbeeidrettsforbund.</p>
+				</div>
+
+				<!-- Contact -->
+				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+					<h3 class="mb-3 font-semibold text-[var(--color-text)]">Spørsmål?</h3>
+					<p class="text-sm text-[var(--color-muted)]">
+						Ta gjerne kontakt med oss hvis du lurer på noe.
+					</p>
+					<a
+						href="/kontakt"
+						class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline"
+					>
+						Gå til kontaktsiden →
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Benefits (second on mobile, left on desktop) -->
+		<div class="order-last lg:order-first">
 			<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Hvorfor bli medlem?</h2>
 			<ul class="space-y-6">
 				{#each [
 					{ title: 'Delta i turneringer', desc: 'Vi arrangerer ligaspill, turnerninger og lavterskel arrangementer.' },
 					{ title: 'Støtt banene', desc: 'Medlemskontingenten går direkte til vedlikehold og utvikling av banene våre.' },
 					{ title: 'Fellesskap', desc: 'Bli en del av oss — et godt miljø med discgolfentusiaster i Groruddalen.' },
-					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },	
+					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },
 					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' },
 					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },
 					{ title: 'Lån utstyr fra klubben', desc: 'Klubben har mye utstyr du kan låne, alt fra verktøy, stoler, telt til techdisc.' },
@@ -40,78 +103,6 @@
 				{/each}
 			</ul>
 		</div>
-
-		<!-- How to join -->
-		<div>
-			<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Slik melder du deg inn</h2>
-
-			<div class="space-y-4">
-
-				<!-- Spond signup -->
-				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-					<div class="mb-3 flex items-center gap-3">
-						<span class="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-primary)] text-xs font-bold text-white">1</span>
-						<h3 class="font-semibold text-[var(--color-text)]">Meld deg inn via Spond</h3>
-					</div>
-					<p class="mb-4 text-sm text-[var(--color-muted)]">
-						Innmelding skjer via Spond. Betalingskrav sendes gjennom Spond-appen etter registrering.
-					</p>
-					<a
-						href="https://club.spond.com/landing/signup/sfrisbeek"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 rounded-lg bg-[var(--color-accent)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
-					>
-						Meld deg inn på Spond ↗
-					</a>
-				</div>
-
-				<!-- Contact -->
-				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-					<div class="mb-3 flex items-center gap-3">
-						<span class="flex h-7 w-7 items-center justify-center rounded-full bg-[var(--color-surface-2)] text-xs font-bold text-[var(--color-primary)] border border-[var(--color-border)]">2</span>
-						<h3 class="font-semibold text-[var(--color-text)]">Spørsmål?</h3>
-					</div>
-					<p class="text-sm text-[var(--color-muted)]">
-						Ta gjerne kontakt med oss hvis du lurer på noe.
-					</p>
-					<a
-						href="/kontakt"
-						class="mt-3 inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline"
-					>
-						Gå til kontaktsiden →
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Pricing -->
-<section class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
-	<div class="mx-auto max-w-6xl px-4 py-16">
-		<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Medlemskontingent</h2>
-		<div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-			<!-- Senior -->
-			<div class="rounded-xl border-2 border-[var(--color-primary)] bg-[var(--color-surface)] p-6">
-				<p class="mb-1 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Seniormedlem</p>
-				<p class="mb-1 text-3xl font-bold text-[var(--color-text)]">Kr 500,-</p>
-				<p class="text-sm text-[var(--color-muted)]">+ kr 105,- NAIF-kontingent*</p>
-			</div>
-			<!-- Junior -->
-			<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-				<p class="mb-1 text-sm font-semibold uppercase tracking-widest text-[var(--color-muted)]">Juniormedlem</p>
-				<p class="mb-1 text-3xl font-bold text-[var(--color-text)]">Kr 100,-</p>
-				<p class="text-sm text-[var(--color-muted)]">+ kr 105,- NAIF-kontingent*</p>
-			</div>
-			<!-- Støtte -->
-			<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
-				<p class="mb-1 text-sm font-semibold uppercase tracking-widest text-[var(--color-muted)]">Støttemedlem</p>
-				<p class="mb-1 text-3xl font-bold text-[var(--color-text)]">Kr 100,-</p>
-				<p class="text-sm text-[var(--color-muted)]">Støtter klubben uten NAIF-avgift</p>
-			</div>
-		</div>
-		<p class="mt-4 text-xs text-[var(--color-muted)]">* NAIF-kontingenten (kr 105,-) er en nasjonal avgift til Norges Frisbeeidrettsforbund og kommer i tillegg til klubbkontingenten.</p>
 	</div>
 </section>
 

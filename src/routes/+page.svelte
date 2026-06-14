@@ -158,26 +158,29 @@
 
 <!-- Brief about -->
 <section class="mx-auto max-w-6xl px-4 py-16">
-	<div class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8 md:p-12">
-		<div class="max-w-2xl">
-			<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Om oss</p>
-			<h2 class="mb-4 text-2xl font-bold text-[var(--color-text)] md:text-3xl">
-				40 år med discgolf i Groruddalen
-			</h2>
-			<p class="mb-4 leading-relaxed text-[var(--color-muted)]">
-				Stovner Frisbeeklubb ble stiftet i 1985 og er en av Norges eldste discidrettsklubber.
-				Vi holder til på Stovner i Oslo, og driver discgolfbaner for alle nivåer — fra nybegynnere til
-				erfarne spillere.
-			</p>
-			<p class="mb-8 leading-relaxed text-[var(--color-muted)]">
-				Fellesskap, glede og kjærlighet til sporten er kjernen i alt vi gjør.
-			</p>
-			<a
-				href="/om-klubben"
-				class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline"
-			>
-				Les mer om klubben →
-			</a>
+	<div class="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+		<div class="grid grid-cols-1 md:grid-cols-2">
+			<div class="p-8 md:p-12">
+				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Om oss</p>
+				<h2 class="mb-4 text-2xl font-bold text-[var(--color-text)] md:text-3xl">
+					40 år med discgolf i Groruddalen
+				</h2>
+				<p class="mb-4 leading-relaxed text-[var(--color-muted)]">
+					Stovner Frisbeeklubb ble stiftet i 1985 og er en av Norges eldste discidrettsklubber.
+					Vi holder til på Stovner i Oslo, og driver discgolfbaner for alle nivåer — fra nybegynnere til
+					erfarne spillere.
+				</p>
+				<p class="mb-8 leading-relaxed text-[var(--color-muted)]">
+					Fellesskap, glede og kjærlighet til sporten er kjernen i alt vi gjør.
+				</p>
+				<a
+					href="/om-klubben"
+					class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline"
+				>
+					Les mer om klubben →
+				</a>
+			</div>
+			<img src="/rocker.jpg" alt="Stovner Frisbeeklubb" class="h-64 w-full object-cover object-center md:h-full" />
 		</div>
 	</div>
 </section>

@@ -7,11 +7,17 @@
 </svelte:head>
 
 <!-- Page header -->
-<section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">
-	<div class="mx-auto max-w-6xl">
-		<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Om oss</p>
-		<h1 class="text-3xl font-bold text-[var(--color-text)] md:text-4xl">Om klubben</h1>
-		<p class="mt-3 text-[var(--color-muted)]">En av Norges eldste discidrettsklubber siden 1985</p>
+<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+	<div class="relative h-72">
+		<img src="/rocker.jpg" alt="Stovner Frisbeeklubb" class="absolute inset-0 w-full h-full object-cover object-center" />
+		<div class="absolute inset-0 bg-black/50"></div>
+		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
+			<div>
+				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Om oss</p>
+				<h1 class="text-3xl font-bold text-white md:text-4xl">Om klubben</h1>
+				<p class="mt-3 text-white/70">En av Norges eldste discidrettsklubber siden 1985</p>
+			</div>
+		</div>
 	</div>
 </section>
 
