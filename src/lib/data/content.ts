@@ -113,7 +113,7 @@ export const events = [
 export const boardMembers = [
 	{ name: 'Herman Walther', role: 'Leder', email: 'leder@stovnerfrisbee.no' },
 	{ name: 'Amund Alstad', role: 'Nestleder', email: '' },
-	{ name: 'Henrik Broum', role: 'Styremedlem', email: '' },
+	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no' },
 	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '' },
 	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '' },
 	{ name: 'Elias Larsen', role: 'Styremedlem', email: '' }
