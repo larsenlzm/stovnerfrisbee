@@ -2,11 +2,17 @@
 	<title>Kontakt · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">
-	<div class="mx-auto max-w-6xl">
-		<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Kontakt</p>
-		<h1 class="text-3xl font-bold text-[var(--color-text)] md:text-4xl">Kontakt & sponsorer</h1>
-		<p class="mt-3 text-[var(--color-muted)]">Spørsmål, samarbeid eller henvendelser</p>
+<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+	<div class="relative h-72">
+		<img src="/sponsor.jpg" alt="Sponsor" class="absolute inset-0 w-full h-full object-cover object-center" />
+		<div class="absolute inset-0 bg-black/55"></div>
+		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
+			<div>
+				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Kontakt</p>
+				<h1 class="text-3xl font-bold text-white md:text-4xl">Kontakt & sponsorer</h1>
+				<p class="mt-3 text-white/70">Spørsmål, samarbeid eller henvendelser</p>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -67,7 +73,7 @@
 		<div>
 			<h2 class="mb-6 text-xl font-bold text-[var(--color-text)]">Sponsorsamarbeid</h2>
 
-			<div class="rounded-xl border border-[var(--color-accent)]/25 bg-[var(--color-accent)]/5 p-8">
+<div class="rounded-xl border border-[var(--color-accent)]/25 bg-[var(--color-accent)]/5 p-8">
 				<div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-accent)]/20 text-[var(--color-accent)]">
 					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
 						<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
