@@ -40,11 +40,25 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
 </svelte:head>
 
+<<<<<<< Updated upstream
 <section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">
 	<div class="mx-auto max-w-6xl">
 		<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Kalender</p>
 		<h1 class="text-3xl font-bold text-[var(--color-text)] md:text-4xl">Arrangementer</h1>
 		<p class="mt-3 text-[var(--color-muted)]">Turneringer, ukentlig golf og ligaspill</p>
+=======
+<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+	<div class="relative h-72">
+		<img src="/ncmaster.jpg" alt="Sponsor" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
+		<div class="absolute inset-0 bg-black/55"></div>
+		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
+			<div>
+				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Kalender</p>
+				<h1 class="text-3xl font-bold text-white md:text-4xl">Arrangementer</h1>
+				<p class="mt-3 text-white/70">Turneringer, ukentlig golf og ligaspill</p>
+			</div>
+		</div>
+>>>>>>> Stashed changes
 	</div>
 </section>
 
@@ -86,7 +100,7 @@
 				rel="noopener noreferrer"
 				class="group flex items-center gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-all hover:border-[var(--color-primary)]/40"
 			>
-				<img src={platform.logo} alt={platform.name} class="h-10 w-10 shrink-0 rounded-lg object-cover" />
+				<img src={platform.logo} alt={platform.name} class="h-10 w-10 shrink-0 rounded-lg object-cover" loading="lazy" decoding="async" />
 				<div>
 					<p class="font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">
 						{platform.name} ↗

@@ -4,7 +4,7 @@
 
 <section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
 	<div class="relative h-72">
-		<img src="/wulf.jpg" alt="Stovner Frisbeeklubb" class="absolute inset-0 w-full h-full object-cover object-center" />
+		<img src="/wulf.jpg" alt="Stovner Frisbeeklubb" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
 		<div class="absolute inset-0 bg-black/50"></div>
 		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
 			<div>
@@ -117,6 +117,8 @@
 					width="160"
 					height="80"
 					class="rounded-lg"
+					loading="lazy"
+					decoding="async"
 				/>
 			</div>
 			<div>

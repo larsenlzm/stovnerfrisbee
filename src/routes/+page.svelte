@@ -79,14 +79,14 @@
 <section class="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden px-4 text-center">
 	<!-- Background image + overlay -->
 	<div class="pointer-events-none absolute inset-0">
-		<img src="/homepagebanner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" />
+		<img src="/homepagebanner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" />
 		<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65"></div>
 	</div>
 
 	<div class="relative z-10 max-w-3xl">
 		<!-- Logo -->
 		<div class="mb-8 flex justify-center">
-			<img src="/stovnerlogo.jpg" alt="Stovner Frisbee" width="120" height="120" class="rounded-full shadow-md" />
+			<img src="/stovnerlogo.jpg" alt="Stovner Frisbee" width="120" height="120" class="rounded-full shadow-md" fetchpriority="high" />
 		</div>
 
 		<h1 class="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -172,7 +172,7 @@
 <!-- Grasrotandelen callout -->
 <section class="mx-auto max-w-6xl px-4 py-4">
 	<div class="flex items-center gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-4">
-		<img src="/norsktipping.jpg" alt="Norsk Tipping" width="48" height="48" class="shrink-0 rounded" />
+		<img src="/norsktipping.jpg" alt="Norsk Tipping" width="48" height="48" class="shrink-0 rounded" loading="lazy" decoding="async" />
 		<div class="min-w-0 flex-1">
 			<p class="text-sm font-semibold text-[var(--color-text)]">Støtt oss via Grasrotandelen</p>
 			<p class="text-sm text-[var(--color-muted)]">7 % av ditt Norsk Tipping-spill går rett til klubben — gratis for deg.</p>
@@ -212,7 +212,7 @@
 					Les mer om klubben →
 				</a>
 			</div>
-			<img src="/rocker.jpg" alt="Stovner Frisbeeklubb" class="h-64 w-full object-cover object-center md:h-full" />
+			<img src="/rocker.jpg" alt="Stovner Frisbeeklubb" class="h-64 w-full object-cover object-center md:h-full" loading="lazy" decoding="async" />
 		</div>
 	</div>
 </section>

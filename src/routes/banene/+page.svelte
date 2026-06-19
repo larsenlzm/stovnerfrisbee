@@ -29,7 +29,11 @@
 
 <section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
 	<div class="relative h-72">
+<<<<<<< Updated upstream
 		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-center" />
+=======
+		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-top" fetchpriority="high" />
+>>>>>>> Stashed changes
 		<div class="absolute inset-0 bg-black/50"></div>
 		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
 			<div>
