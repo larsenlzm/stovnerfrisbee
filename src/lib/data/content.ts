@@ -56,7 +56,8 @@ export const events = [
 			'8 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
 		link: 'https://tjing.se/tour/3fa54bea-456c-4e48-b75c-6748ad2a1b00/',
 		linkText: 'Påmelding via Tjing',
-		category: 'Ukentlig, PDGA'
+		category: 'Ukentlig, PDGA',
+		resultsLink: '/arrangementer/varligaen-2026'
 	},
 	{
 		title: 'Stovner Open 2026',
@@ -111,12 +112,12 @@ export const events = [
 ];
 
 export const boardMembers = [
-	{ name: 'Herman Walther', role: 'Leder', email: 'leder@stovnerfrisbee.no' },
-	{ name: 'Amund Alstad', role: 'Nestleder', email: '' },
-	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no' },
-	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '' },
-	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '' },
-	{ name: 'Elias Larsen', role: 'Styremedlem', email: '' }
+	{ name: 'Herman Walther', role: 'Leder', email: 'leder@stovnerfrisbee.no', image: '/mansverk.jpg' },
+	{ name: 'Amund Alstad', role: 'Nestleder', email: '', image: '/Mundo.jpg' },
+	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no', image: '/riky.jpg' },
+	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '', image: '/Sebbe.jpg' },
+	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '', image: '/jesman.jpg' },
+	{ name: 'Elias Larsen', role: 'Styremedlem', email: '', image: '/meg.jpg' }
 ];
 
 export const socialLinks = [
