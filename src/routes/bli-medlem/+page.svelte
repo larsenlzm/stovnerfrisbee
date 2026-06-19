@@ -57,7 +57,7 @@
 							<span class="font-bold text-[var(--color-text)]">Kr 100,-</span>
 						</div>
 					</div>
-					<p class="mt-3 text-xs text-[var(--color-muted)]">Senior og junior betaler i tillegg kr 105,- i NAIF-kontingent til Norges Frisbeeidrettsforbund.</p>
+					<p class="mt-3 text-xs text-[var(--color-muted)]">Senior og junior betaler i tillegg kr 105,- i NAIF-kontingent til Norges amerikanske idretters forbund (NAIF).</p>
 				</div>
 
 				<!-- Contact -->
