@@ -5,10 +5,39 @@
 	const today = new Date().toISOString().slice(0, 10);
 	const upcoming = events.filter(e => !e.endDate || e.endDate >= today);
 	const ended = events.filter(e => e.endDate && e.endDate < today);
+
+	const eventSchema = {
+		"@context": "https://schema.org",
+		"@graph": upcoming.map(e => ({
+			"@type": "SportsEvent",
+			"name": e.title,
+			"description": e.description,
+			"startDate": e.endDate ?? undefined,
+			"endDate": e.endDate ?? undefined,
+			"eventStatus": "https://schema.org/EventScheduled",
+			"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+			"location": {
+				"@type": "Place",
+				"name": "Stovner Discgolfpark",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Oslo",
+					"addressCountry": "NO"
+				}
+			},
+			"organizer": {
+				"@type": "SportsClub",
+				"name": "Stovner Frisbeeklubb",
+				"url": "https://stovnerfrisbee.no"
+			},
+			"url": e.link
+		}))
+	};
 </script>
 
 <svelte:head>
 	<title>Arrangementer · Stovner Frisbeeklubb</title>
+	{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
 </svelte:head>
 
 <section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">

@@ -41,6 +41,38 @@
 
 <svelte:head>
 	<title>Stovner Frisbeeklubb</title>
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": ["SportsClub", "NonprofitOrganization"],
+		"name": "Stovner Frisbeeklubb",
+		"alternateName": "Stovner Frisbee",
+		"description": "En av Norges eldste discidrettsklubber, stiftet i 1985. Vi driver discgolfbaner i Stovnerlia og arrangerer turneringer og ukentlig golf for alle nivåer.",
+		"url": "https://stovnerfrisbee.no",
+		"logo": "https://stovnerfrisbee.no/stovnerlogo.jpg",
+		"foundingDate": "1985",
+		"sport": "Discgolf",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Oslo",
+			"addressRegion": "Oslo",
+			"addressCountry": "NO"
+		},
+		"sameAs": [
+			"https://www.facebook.com/Stovnerfrisbeeklubb",
+			"https://www.instagram.com/stovnerfrisbee",
+			"https://udisc.com/events?courseId=ZiBrXtmJjmsj8DWRe"
+		],
+		"memberOf": {
+			"@type": "SportsOrganization",
+			"name": "Norges amerikanske idretters forbund (NAIF)"
+		},
+		"offers": {
+			"@type": "Offer",
+			"name": "Medlemskap i Stovner Frisbeeklubb",
+			"description": "Bli medlem og delta i turneringer, ligaspill og ukentlig golf. Støtt banene i Stovnerlia.",
+			"url": "https://stovnerfrisbee.no/bli-medlem"
+		}
+	})}</script>`}
 </svelte:head>
 
 <!-- Hero -->
