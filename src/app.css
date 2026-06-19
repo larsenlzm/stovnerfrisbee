@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@custom-variant dark {
+	@media (prefers-color-scheme: dark) {
+		&:where(:not([data-theme="light"])) { @slot; }
+	}
+	&:where([data-theme="dark"], [data-theme="dark"] *) { @slot; }
+}
+
 @theme {
 	--color-bg: #F4F8F5;
 	--color-surface: #FFFFFF;

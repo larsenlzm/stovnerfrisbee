@@ -7,9 +7,10 @@
 		linkText: string;
 		category: string;
 		ended?: boolean;
+		resultsLink?: string;
 	}
 
-	let { title, date, description, link, linkText, category, ended = false }: Props = $props();
+	let { title, date, description, link, linkText, category, ended = false, resultsLink }: Props = $props();
 
 	const tagStyles: Record<string, string> = {
 		'Ukentlig':  'bg-[#1C6B42]/12 text-[#1C6B42]',
@@ -44,11 +45,16 @@
 	</div>
 	<h3 class="mb-2 text-lg font-semibold text-[var(--color-text)]">{title}</h3>
 	<p class="mb-5 flex-1 text-sm leading-relaxed text-[var(--color-muted)]">{description}</p>
-	{#if ended}
-		<span class="text-sm text-[var(--color-muted)]">Arrangementet er avsluttet</span>
-	{:else}
-		<a
-			href={link}
+	<div class="flex flex-wrap items-center gap-3">
+		{#if resultsLink}
+			<a href={resultsLink}
+				class="mb-1 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors">
+				Se resultater →
+			</a>
+		{/if}
+	</div>
+	<div class="flex flex-wrap items-center gap-3">
+		<a  href={link}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition-colors"
@@ -58,5 +64,5 @@
 				<path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
 		</a>
-	{/if}
+	</div>
 </div>

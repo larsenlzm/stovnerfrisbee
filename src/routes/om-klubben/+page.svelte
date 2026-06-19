@@ -73,14 +73,6 @@
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 		{#each boardMembers as member}
 			<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
-<<<<<<< Updated upstream
-				<div class="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary)]">
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-						<circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-						<path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-					</svg>
-				</div>
-=======
 				{#if member.image}
 					<img src={member.image} alt={member.name} width="64" height="64" class="mb-3 h-16 w-16 rounded-full object-cover" loading="lazy" decoding="async" />
 				{:else}
@@ -91,7 +83,6 @@
 						</svg>
 					</div>
 				{/if}
->>>>>>> Stashed changes
 				<p class="font-semibold text-[var(--color-text)]">{member.name || '—'}</p>
 				<p class="text-sm text-[var(--color-primary)]">{member.role}</p>
 				{#if member.email}

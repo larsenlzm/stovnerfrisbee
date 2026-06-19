@@ -40,13 +40,6 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
 </svelte:head>
 
-<<<<<<< Updated upstream
-<section class="bg-[var(--color-surface)] border-b border-[var(--color-border)] px-4 py-16">
-	<div class="mx-auto max-w-6xl">
-		<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Kalender</p>
-		<h1 class="text-3xl font-bold text-[var(--color-text)] md:text-4xl">Arrangementer</h1>
-		<p class="mt-3 text-[var(--color-muted)]">Turneringer, ukentlig golf og ligaspill</p>
-=======
 <section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
 	<div class="relative h-72">
 		<img src="/ncmaster.jpg" alt="Sponsor" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
@@ -58,7 +51,6 @@
 				<p class="mt-3 text-white/70">Turneringer, ukentlig golf og ligaspill</p>
 			</div>
 		</div>
->>>>>>> Stashed changes
 	</div>
 </section>
 

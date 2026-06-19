@@ -249,7 +249,7 @@
 				<circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor"/>
 				<path d="M7.5 5V7.5M7.5 10V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
 			</svg>
-			<span>Topp 6 av 8 runder teller. Strykede runder vises nedtonet med parentes i tabellen. · Sammenlagtpremie: <strong class="text-[var(--color-primary)]">{calcPot(selectedDiv).toLocaleString('no-NO')} kr</strong></span>
+			<span>Topp 6 av 8 runder teller. Sammenlagtpremie: <strong class="text-[var(--color-primary)]">{calcPot(selectedDiv).toLocaleString('no-NO')} kr</strong></span>
 		</div>
 		<div class="overflow-x-auto rounded-xl border border-[var(--color-border)]">
 				<table class="w-full text-sm">
