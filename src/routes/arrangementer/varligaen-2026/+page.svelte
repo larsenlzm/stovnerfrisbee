@@ -154,7 +154,7 @@
 <!-- Hero header -->
 <section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
 	<div class="relative h-64 md:h-72">
-		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-center" />
+		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-top" />
 		<div class="absolute inset-0 bg-black/55"></div>
 		<div class="relative z-10 flex h-full flex-col justify-between px-4 py-6 mx-auto max-w-6xl">
 			<a href="/arrangementer" class="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white transition-colors w-fit">
