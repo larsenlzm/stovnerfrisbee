@@ -100,12 +100,42 @@ export const events = [
 		category: 'Turnering, PDGA, DOUBLES'
 	},
 	{
+		title: 'Høstligaen 2026',
+		date: 'Onsdager 12. aug – 16. sep',
+		endDate: '2026-09-16',
+		description:
+			'6 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
+		link: 'https://tjing.se/tour/35f47def-f801-4861-9528-912673606e10/events',
+		linkText: 'Mer info på Tjing',
+		category: 'Ukentlig, PDGA'
+	},
+	{
 		title: 'HyzerTour Stovner 2026',
 		date: '22.–23. august 2026',
 		endDate: '2026-08-23',
 		description:
 			'PDGA C-tier presentert av HyzerShop.no. En av de store sommerturneringene på Stovner Discgolfpark.',
 		link: 'https://www.discgolfscene.com/tournaments/HyzerTour_Stovner_2026_presented_by_HyzerShop_no',
+		linkText: 'Mer info på DGScene',
+		category: 'Turnering, PDGA'
+	},
+	{
+		title: 'Klubbmesterskap 2026',
+		date: '30. august 2026',
+		endDate: '2026-08-30',
+		description:
+			'Stovner Frisbeeklubbs klubbmesterskap – 2 runder på hjemmebanen, åpent for alle divisjoner.',
+		link: 'https://udisc.com/events/klubbmesterskap-stovner-frisbeeklubb-2026-vv8hhl/about',
+		linkText: 'Mer info på UDisc',
+		category: 'Turnering'
+	},
+	{
+		title: 'Sesongfinalen på Stovner 2026',
+		date: '20. september 2026',
+		endDate: '2026-09-20',
+		description:
+			'PDGA C-tier – sesongens avsluttende turnering på hjemmebanen, to runder med shotgunstart.',
+		link: 'https://www.discgolfscene.com/tournament/Sesongfinalen_pa_Stovner_2026',
 		linkText: 'Mer info på DGScene',
 		category: 'Turnering, PDGA'
 	}

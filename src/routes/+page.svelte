@@ -4,39 +4,6 @@
 
 	const today = new Date().toISOString().slice(0, 10);
 	const upcomingEvents = events.filter(e => !e.endDate || e.endDate >= today);
-
-	const quickLinks = [
-		{
-			href: '/om-klubben',
-			title: 'Om klubben',
-			description: 'Historien vår, verdier og hvem vi er',
-			icon: '🏆'
-		},
-		{
-			href: '/banene',
-			title: 'Banene',
-			description: 'Discgolfbanene vi driver i Stovner',
-			icon: '🥏'
-		},
-		{
-			href: '/arrangementer',
-			title: 'Arrangementer',
-			description: 'Turneringer, torsdagsgolf og liga',
-			icon: '📅'
-		},
-		{
-			href: '/bli-medlem',
-			title: 'Bli medlem',
-			description: 'Meld deg inn og bli en del av klubben',
-			icon: '✨'
-		},
-		{
-			href: '/kontakt',
-			title: 'Kontakt oss',
-			description: 'Spørsmål eller sponsorsamarbeid',
-			icon: '✉️'
-		}
-	];
 </script>
 
 <svelte:head>
@@ -130,24 +97,6 @@
 		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
 			<path d="M4 7L10 13L16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 		</svg>
-	</div>
-</section>
-
-<!-- Quick nav cards -->
-<section class="mx-auto max-w-6xl px-4 py-16">
-	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-		{#each quickLinks as link}
-			<a
-				href={link.href}
-				class="group flex flex-col items-start rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface-2)]"
-			>
-				<span class="mb-3 text-2xl" aria-hidden="true">{link.icon}</span>
-				<h2 class="mb-1 font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)] transition-colors">
-					{link.title}
-				</h2>
-				<p class="text-sm text-[var(--color-muted)]">{link.description}</p>
-			</a>
-		{/each}
 	</div>
 </section>
 
