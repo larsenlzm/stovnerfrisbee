@@ -97,3 +97,15 @@
 		For generelle henvendelser: <a href="mailto:kontakt@stovnerfrisbee.no" class="text-[var(--color-primary)] hover:underline">kontakt@stovnerfrisbee.no</a>
 	</p>
 </section>
+
+<!-- Organisasjonsinfo -->
+<section class="mx-auto max-w-6xl px-4 pb-16">
+	<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+		<h2 class="mb-3 text-lg font-bold text-[var(--color-text)]">Organisasjonsinfo</h2>
+		<p class="text-sm text-[var(--color-muted)]">
+			Stovner Frisbeeklubb<br />
+			Organisasjonsnummer: 894 417 382<br />
+			Idas vei 35, 0981 Oslo
+		</p>
+	</div>
+</section>

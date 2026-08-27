@@ -18,8 +18,11 @@
 		"logo": "https://stovnerfrisbee.no/stovnerlogo.jpg",
 		"foundingDate": "1985",
 		"sport": "Discgolf",
+		"taxID": "894417382",
 		"address": {
 			"@type": "PostalAddress",
+			"streetAddress": "Idas vei 35",
+			"postalCode": "0981",
 			"addressLocality": "Oslo",
 			"addressRegion": "Oslo",
 			"addressCountry": "NO"

@@ -18,6 +18,9 @@
 				<p class="mt-3 text-sm text-[var(--color-muted)]">
 					En av Norges eldste discidrettsklubber, med baner i hjertet av Groruddalen.
 				</p>
+				<p class="mt-3 text-sm text-[var(--color-muted)]">
+					Org.nr: 894 417 382 · Idas vei 35, 0981 Oslo
+				</p>
 			</div>
 
 			<!-- Social -->

@@ -62,9 +62,14 @@
 				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
 					<p class="mb-1 text-sm font-semibold text-[var(--color-text)]">Adresse</p>
 					<p class="text-sm text-[var(--color-muted)]">
-						Stovnerlia, Stovner<br />
-						Oslo, Norge
+						Idas vei 35<br />
+						0981 Oslo, Norge
 					</p>
+				</div>
+
+				<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+					<p class="mb-1 text-sm font-semibold text-[var(--color-text)]">Organisasjonsnummer</p>
+					<p class="text-sm text-[var(--color-muted)]">894 417 382</p>
 				</div>
 			</div>
 		</div>

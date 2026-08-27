@@ -67,6 +67,7 @@ Two pages have structured data embedded in `<svelte:head>`:
 - Full name: Stovner Frisbeeklubb
 - Founded: 1985
 - Location: Stovner, Oslo, Norway
+- Address: Idas vei 35, 0981 Oslo
 - Sport: Discgolf
 - Member of: Norges amerikanske idretters forbund (NAIF)
 - Organisation number: 894 417 382

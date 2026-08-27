@@ -147,7 +147,7 @@ export const boardMembers = [
 	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no', image: '/riky.jpg' },
 	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '', image: '/Sebbe.jpg' },
 	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '', image: '/jesman.jpg' },
-	{ name: 'Elias Larsen', role: 'Styremedlem', email: '', image: '/meg.jpg' }
+	{ name: 'Elias Larsen', role: 'Styremedlem · Kontaktperson for nettsiden', email: 'eliassagmolarsen@gmail.com', image: '/meg.jpg' }
 ];
 
 export const socialLinks = [
