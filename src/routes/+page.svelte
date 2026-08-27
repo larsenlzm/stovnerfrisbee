@@ -12,6 +12,7 @@
 		"@context": "https://schema.org",
 		"@type": ["SportsClub", "NonprofitOrganization"],
 		"name": "Stovner Frisbeeklubb",
+		"legalName": "Stovner Frisbee Klubb",
 		"alternateName": "Stovner Frisbee",
 		"description": "En av Norges eldste discidrettsklubber, stiftet i 1985. Vi driver discgolfbaner i Stovnerlia og arrangerer turneringer og ukentlig golf for alle nivåer.",
 		"url": "https://stovnerfrisbee.no",
