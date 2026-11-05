@@ -4,6 +4,13 @@
 
 	const today = new Date().toISOString().slice(0, 10);
 	const upcomingEvents = events.filter(e => !e.endDate || e.endDate >= today);
+	const nextEvent = upcomingEvents[0];
+
+	const cards = [
+		{ href: '/ny-til-discgolf', title: 'Ny til discgolf', text: 'Slik prøver du sporten.', image: '/forside/ny-til-discgolf.webp' },
+		{ href: '/banene', title: 'Banene', text: 'Hull, lengde og kart.', image: '/forside/banene.webp' },
+		{ href: '/arrangementer', title: 'Arrangementer', text: 'Turneringer og ligaspill.', image: '/forside/arrangementer.webp' }
+	];
 </script>
 
 <svelte:head>
@@ -47,90 +54,94 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center overflow-hidden px-4 text-center">
-	<!-- Background image + overlay -->
-	<div class="pointer-events-none absolute inset-0">
-		<img src="/homepagebanner.jpg" alt="" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" />
-		<div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-black/65"></div>
+<section class="mx-auto max-w-6xl px-4 pt-3">
+	<div class="aspect-[4/3] overflow-hidden rounded-2xl bg-[var(--color-surface-2)] md:aspect-[21/9]">
+		<img
+			src="/forside/hero.webp"
+			alt="Spillere på banen på Stovner, sett gjennom blomstrende busker"
+			width="1400"
+			height="1050"
+			class="h-full w-full object-cover object-[50%_38%]"
+			fetchpriority="high"
+		/>
 	</div>
 
-	<div class="relative z-10 max-w-3xl">
-		<!-- Logo -->
-		<div class="mb-8 flex justify-center">
-			<img src="/stovnerlogo.jpg" alt="Stovner Frisbee" width="120" height="120" class="rounded-full shadow-md" fetchpriority="high" />
-		</div>
-
-		<h1 class="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-			Stovner<br/><span class="text-[var(--color-primary-light,#7dd3fc)]">Frisbeeklubb</span>
-		</h1>
-		<p class="mb-3 text-xl font-medium text-white/80 sm:text-2xl">
+	<div class="max-w-2xl pb-12 pt-7 md:pb-20 md:pt-12">
+		<p class="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">
+			Stovner Frisbeeklubb · Siden 1985
+		</p>
+		<h1 class="mb-4 mt-3.5 text-balance text-3xl font-bold leading-[1.08] tracking-tight text-[var(--color-text)] sm:text-4xl md:text-5xl">
 			En discgolfperle nord i Groruddalen
+		</h1>
+		<p class="max-w-lg text-base text-[var(--color-muted)] md:text-lg">
+			En av Norges eldste discidrettsklubber. Banene er åpne og gratis for alle.
 		</p>
-		<p class="mb-10 text-base text-white/60">
-			Stiftet 1985 · En av Norges eldste discidrettsklubber
-		</p>
-
-		<div class="flex flex-col items-center gap-3">
-			<!-- Rad 1: to bokstknapper -->
-			<div class="flex flex-col sm:flex-row items-center gap-3">
-				<a
-					href="/bli-medlem"
-					data-track="frontpage-hero"
-					class="rounded-lg bg-[var(--color-accent)] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-[var(--color-accent-dark)] hover:shadow-[var(--color-accent)]/20 hover:shadow-xl"
-				>
-					Bli medlem
-				</a>
-				<a
-					href="/arrangementer"
-					class="rounded-lg border border-white/50 px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white"
-				>
-					Kommende arrangementer
-				</a>
-			</div>
-			<!-- Rad 2: ghost-lenke -->
+		<div class="mt-7 flex flex-wrap gap-2.5">
+			<a
+				href="/bli-medlem"
+				data-track="frontpage-hero"
+				class="rounded-lg bg-[var(--color-accent)] px-[22px] py-3 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
+			>
+				Bli medlem
+			</a>
 			<a
 				href="/banene"
-				class="text-sm font-medium text-white/70 transition-colors hover:text-white"
+				class="rounded-lg border border-[var(--color-text)]/25 px-[22px] py-3 text-sm font-semibold text-[var(--color-text)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
 			>
-				Se banene →
+				Se banene
 			</a>
 		</div>
 	</div>
+</section>
 
-	<!-- Scroll hint -->
-	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
-		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-			<path d="M4 7L10 13L16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-		</svg>
+<!-- Next event -->
+{#if nextEvent}
+	<section data-event={nextEvent.title} class="bg-[var(--color-surface-2)] py-14 md:py-20">
+		<div class="mx-auto max-w-6xl px-4">
+			<div class="grid gap-7 md:grid-cols-[1.2fr_1fr] md:items-end md:gap-16">
+				<div>
+					<p class="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">Neste arrangement</p>
+					<h2 class="mt-2.5 text-balance text-2xl font-bold leading-tight tracking-tight text-[var(--color-text)] md:text-3xl">{nextEvent.title}</h2>
+					<p class="mt-3.5 max-w-[30rem] text-[15px] text-[var(--color-muted)]">{nextEvent.description}</p>
+				</div>
+				<div>
+					<p class="text-xl font-semibold tracking-tight text-[var(--color-text)] md:text-2xl">{nextEvent.date}</p>
+					<div class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[var(--color-primary)]">
+						<a href={nextEvent.link} target="_blank" rel="noopener noreferrer" class="hover:underline">{nextEvent.linkText} ↗</a>
+						<a href="/arrangementer" class="hover:underline">Alle arrangementer →</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{/if}
+
+<!-- Get started -->
+<section class="py-14 md:py-20">
+	<div class="mx-auto max-w-6xl px-4">
+		<p class="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">Kom i gang</p>
+		<h2 class="mt-2.5 text-balance text-2xl font-bold leading-tight tracking-tight text-[var(--color-text)] md:text-3xl">Alt du trenger for å spille</h2>
+		<div class="mt-7 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
+			{#each cards as card}
+				<a href={card.href} class="group block">
+					<div class="aspect-[4/3] overflow-hidden rounded-2xl bg-[var(--color-surface-2)]">
+						<img src={card.image} alt="" class="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+					</div>
+					<h3 class="mb-0.5 mt-3.5 text-[17px] font-semibold tracking-tight text-[var(--color-text)] transition-colors group-hover:text-[var(--color-primary)]">{card.title}</h3>
+					<p class="text-sm text-[var(--color-muted)]">{card.text}</p>
+				</a>
+			{/each}
+		</div>
 	</div>
 </section>
 
-<!-- Upcoming events teaser -->
-<section class="mx-auto max-w-6xl px-4 py-8">
-	<div class="mb-8 flex items-end justify-between">
-		<div>
-			<h2 class="text-2xl font-bold text-[var(--color-text)]">Kommende arrangementer</h2>
-			<p class="mt-1 text-sm text-[var(--color-muted)]">Turneringer, ukentlig golf og mer</p>
-		</div>
-		<a href="/arrangementer" class="text-sm font-medium text-[var(--color-primary)] hover:underline">
-			Se alle →
-		</a>
-	</div>
-	<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-		{#each upcomingEvents as event}
-			<EventCard {...event} />
-		{/each}
-	</div>
-</section>
-
-<!-- Grasrotandelen callout -->
-<section class="mx-auto max-w-6xl px-4 py-4">
-	<div class="flex items-center gap-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-4">
-		<img src="/norsktipping.jpg" alt="Norsk Tipping" width="48" height="48" class="shrink-0 rounded" loading="lazy" decoding="async" />
-		<div class="min-w-0 flex-1">
-			<p class="text-sm font-semibold text-[var(--color-text)]">Støtt oss via Grasrotandelen</p>
-			<p class="text-sm text-[var(--color-muted)]">7 % av ditt Norsk Tipping-spill går rett til klubben — gratis for deg.</p>
-		</div>
+<!-- Grasrotandelen -->
+<section class="bg-[var(--color-surface-2)] py-10 md:py-12">
+	<div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 md:flex-row md:items-center md:justify-between md:gap-8">
+		<p class="text-[15px] text-[var(--color-text)]">
+			<span class="font-semibold">Støtt oss gratis via Grasrotandelen.</span>
+			<span class="text-[var(--color-muted)]">7 % av ditt Norsk Tipping-spill går til klubben.</span>
+		</p>
 		<a
 			href="https://www.norsk-tipping.no/grasrotandelen/din-mottaker/894417382"
 			target="_blank"
@@ -139,34 +150,5 @@
 		>
 			Velg oss ↗
 		</a>
-	</div>
-</section>
-
-<!-- Brief about -->
-<section class="mx-auto max-w-6xl px-4 py-16">
-	<div class="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-		<div class="grid grid-cols-1 md:grid-cols-2">
-			<div class="p-8 md:p-12">
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-[var(--color-primary)]">Om oss</p>
-				<h2 class="mb-4 text-2xl font-bold text-[var(--color-text)] md:text-3xl">
-					40 år med discgolf i Groruddalen
-				</h2>
-				<p class="mb-4 leading-relaxed text-[var(--color-muted)]">
-					Stovner Frisbeeklubb ble stiftet i 1985 og er en av Norges eldste discidrettsklubber.
-					Vi holder til på Stovner i Oslo, og driver discgolfbaner for alle nivåer — fra nybegynnere til
-					erfarne spillere.
-				</p>
-				<p class="mb-8 leading-relaxed text-[var(--color-muted)]">
-					Fellesskap, glede og kjærlighet til sporten er kjernen i alt vi gjør.
-				</p>
-				<a
-					href="/om-klubben"
-					class="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-primary)] hover:underline"
-				>
-					Les mer om klubben →
-				</a>
-			</div>
-			<img src="/rocker.jpg" alt="Stovner Frisbeeklubb" class="h-64 w-full object-cover object-center md:h-full" loading="lazy" decoding="async" />
-		</div>
 	</div>
 </section>
