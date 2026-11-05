@@ -24,6 +24,7 @@
     "xlsx": "^0.18.5"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1"
+    "@vercel/analytics": "^2.0.1",
+    "posthog-js": "^1.446.3"
   }
 }

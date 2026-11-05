@@ -75,6 +75,7 @@
 			<div class="flex flex-col sm:flex-row items-center gap-3">
 				<a
 					href="/bli-medlem"
+					data-track="frontpage-hero"
 					class="rounded-lg bg-[var(--color-accent)] px-8 py-3.5 text-base font-semibold text-white shadow-lg transition-all hover:bg-[var(--color-accent-dark)] hover:shadow-[var(--color-accent)]/20 hover:shadow-xl"
 				>
 					Bli medlem

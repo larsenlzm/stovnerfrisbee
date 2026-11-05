@@ -45,6 +45,7 @@
 						{#if link.cta}
 							<a
 								href={link.href}
+								data-track="nav-desktop"
 								class="ml-2 rounded-lg bg-[var(--color-accent)] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
 							>
 								{link.label}
@@ -88,6 +89,7 @@
 			<div class="md:hidden flex items-center gap-2">
 				<a
 					href="/bli-medlem"
+					data-track="nav-mobile-cta"
 					class="rounded-lg bg-[var(--color-accent)] px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
 				>
 					Bli medlem
@@ -113,6 +115,7 @@
 						{#if link.cta}
 							<a
 								href={link.href}
+								data-track="nav-mobile-menu"
 								onclick={closeMenu}
 								class="mt-1 block rounded-lg bg-[var(--color-accent)] px-3 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-[var(--color-accent-dark)]"
 							>

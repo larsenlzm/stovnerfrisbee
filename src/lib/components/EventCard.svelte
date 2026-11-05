@@ -27,7 +27,7 @@
 	}
 </script>
 
-<div class="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors {ended ? 'opacity-60' : 'hover:border-[var(--color-primary)]/40'}">
+<div data-event={title} class="flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 transition-colors {ended ? 'opacity-60' : 'hover:border-[var(--color-primary)]/40'}">
 	<div class="mb-3 flex items-start justify-between gap-2">
 		<div class="flex flex-wrap gap-1.5">
 			{#if ended}
