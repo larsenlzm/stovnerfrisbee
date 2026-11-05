@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { courses } from '$lib/data/content';
 
 	function formatRoundTime(minutes: number): string {
@@ -27,19 +28,7 @@
 	<title>Banene · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
-	<div class="relative h-72">
-		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-top" fetchpriority="high" />
-		<div class="absolute inset-0 bg-black/50"></div>
-		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
-			<div>
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Baner</p>
-				<h1 class="text-3xl font-bold text-white md:text-4xl">Banene</h1>
-				<p class="mt-3 text-white/70">Discgolfbanene vi driver på Stovner i Oslo</p>
-			</div>
-		</div>
-	</div>
-</section>
+<PageHeader eyebrow="Baner" title="Banene" subtitle="Discgolfbanene vi driver på Stovner i Oslo" image="/bane.jpg" alt="Stovner Discgolfpark" position="object-top" />
 
 <section class="mx-auto max-w-6xl px-4 py-16">
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">

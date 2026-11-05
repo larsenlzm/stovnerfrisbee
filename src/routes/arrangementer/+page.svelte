@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { events } from '$lib/data/content';
 
@@ -40,19 +41,7 @@
 	{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
 </svelte:head>
 
-<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
-	<div class="relative h-72">
-		<img src="/ncmaster.jpg" alt="Sponsor" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
-		<div class="absolute inset-0 bg-black/55"></div>
-		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
-			<div>
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Kalender</p>
-				<h1 class="text-3xl font-bold text-white md:text-4xl">Arrangementer</h1>
-				<p class="mt-3 text-white/70">Turneringer, ukentlig golf og ligaspill</p>
-			</div>
-		</div>
-	</div>
-</section>
+<PageHeader eyebrow="Kalender" title="Arrangementer" subtitle="Turneringer, ukentlig golf og ligaspill" image="/ncmaster.jpg" alt="Sponsor" />
 
 <section class="mx-auto max-w-6xl px-4 py-16">
 	<h2 class="mb-6 text-xl font-semibold text-[var(--color-text)]">

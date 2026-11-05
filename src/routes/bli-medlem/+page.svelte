@@ -1,20 +1,12 @@
+<script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
+</script>
+
 <svelte:head>
 	<title>Bli medlem · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
-	<div class="relative h-72">
-		<img src="/wulf.jpg" alt="Stovner Frisbeeklubb" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
-		<div class="absolute inset-0 bg-black/50"></div>
-		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
-			<div>
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Medlemskap</p>
-				<h1 class="text-3xl font-bold text-white md:text-4xl">Bli medlem</h1>
-				<p class="mt-3 text-white/70">Meld deg inn og spill med oss</p>
-			</div>
-		</div>
-	</div>
-</section>
+<PageHeader eyebrow="Medlemskap" title="Bli medlem" subtitle="Meld deg inn og spill med oss" image="/wulf.jpg" alt="Stovner Frisbeeklubb" />
 
 <!-- Benefits + How to join -->
 <section class="mx-auto max-w-6xl px-4 py-16">

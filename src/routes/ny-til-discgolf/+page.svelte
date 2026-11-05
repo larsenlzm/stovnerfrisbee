@@ -1,20 +1,12 @@
+<script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
+</script>
+
 <svelte:head>
 	<title>Ny til discgolf · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
-	<div class="relative h-72">
-		<img src="/rocker.jpg" alt="Discgolfkurv på Stovner" class="absolute inset-0 w-full h-full object-cover object-center" fetchpriority="high" />
-		<div class="absolute inset-0 bg-black/50"></div>
-		<div class="relative z-10 flex h-full items-end px-4 pb-10 mx-auto max-w-6xl">
-			<div>
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Kom i gang</p>
-				<h1 class="text-3xl font-bold text-white md:text-4xl">Ny til discgolf</h1>
-				<p class="mt-3 text-white/70">Slik prøver du sporten</p>
-			</div>
-		</div>
-	</div>
-</section>
+<PageHeader eyebrow="Kom i gang" title="Ny til discgolf" subtitle="Slik prøver du sporten" image="/rocker.jpg" alt="Discgolfkurv på Stovner" />
 
 <section class="mx-auto max-w-3xl px-4 py-16">
 	<div class="space-y-12">

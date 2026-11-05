@@ -1,4 +1,5 @@
 <script lang="ts">
+	import PageHeader from '$lib/components/PageHeader.svelte';
 	import data from '$lib/data/varligaen2026.json';
 
 	const DIV_ORDER = ['MPO', 'FPO', 'MA3', 'MA4', 'MP40'];
@@ -151,26 +152,7 @@
 	<title>Vårligaen 2026 · Stovner Frisbeeklubb</title>
 </svelte:head>
 
-<!-- Hero header -->
-<section class="relative overflow-hidden bg-[var(--color-surface)] border-b border-[var(--color-border)]">
-	<div class="relative h-64 md:h-72">
-		<img src="/bane.jpg" alt="Stovner Discgolfpark" class="absolute inset-0 w-full h-full object-cover object-top" fetchpriority="high" />
-		<div class="absolute inset-0 bg-black/55"></div>
-		<div class="relative z-10 flex h-full flex-col justify-between px-4 py-6 mx-auto max-w-6xl">
-			<a href="/arrangementer" class="inline-flex items-center gap-1 text-sm text-white/70 hover:text-white transition-colors w-fit">
-				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-					<path d="M10 7H4M4 7L7 4M4 7L7 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-				</svg>
-				Arrangementer
-			</a>
-			<div>
-				<p class="mb-2 text-sm font-semibold uppercase tracking-widest text-white/70">Resultater</p>
-				<h1 class="text-3xl font-bold text-white md:text-4xl">Vårligaen 2026</h1>
-				<p class="mt-2 text-white/70">8 runder · Stovner Discgolfpark · Layout 2025 · Par 57</p>
-			</div>
-		</div>
-	</div>
-</section>
+<PageHeader eyebrow="Resultater" title="Vårligaen 2026" subtitle="8 runder · Stovner Discgolfpark · Layout 2025 · Par 57" image="/bane.jpg" alt="Stovner Discgolfpark" position="object-top" backHref="/arrangementer" backLabel="Arrangementer" />
 
 <div class="mx-auto max-w-6xl px-4 py-10 space-y-6">
 
