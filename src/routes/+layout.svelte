@@ -10,6 +10,13 @@
 	const eventPage = $derived($page.route.id === '/norges-cup');
 </script>
 
+<!-- Standardbeskrivelse for klubbsidene; arrangementssiden setter sin egen -->
+<svelte:head>
+	{#if !eventPage}
+		<meta name="description" content="Stovner Frisbeeklubb — En discgolfperle nord i Groruddalen siden 1985." />
+	{/if}
+</svelte:head>
+
 {#if eventPage}
 	{@render children()}
 {:else}
