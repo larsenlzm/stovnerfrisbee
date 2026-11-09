@@ -152,12 +152,12 @@ export const events = [
 ];
 
 export const boardMembers = [
-	{ name: 'Herman Walther', role: 'Leder', email: 'leder@stovnerfrisbee.no', image: '/mansverk.jpg' },
+	{ name: 'Herman Walther', role: 'Leder', email: 'herman@stovnerfrisbee.no', image: '/mansverk.jpg' },
 	{ name: 'Amund Alstad', role: 'Nestleder', email: '', image: '/Mundo.jpg' },
 	{ name: 'Henrik Broum', role: 'Styremedlem', email: 'td@stovnerfrisbee.no', image: '/riky.jpg' },
 	{ name: 'Sebastian Hagen', role: 'Styremedlem', email: '', image: '/Sebbe.jpg' },
 	{ name: 'Jesper Hauge', role: 'Styremedlem', email: '', image: '/jesman.jpg' },
-	{ name: 'Elias Larsen', role: 'Styremedlem · Kontaktperson for nettsiden', email: 'eliassagmolarsen@gmail.com', image: '/meg.jpg' }
+	{ name: 'Elias Larsen', role: 'Styremedlem · Kontaktperson for nettsiden', email: 'admin@stovnerfrisbee.no', image: '/meg.jpg' }
 ];
 
 export const socialLinks = [
