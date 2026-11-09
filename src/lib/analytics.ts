@@ -1,8 +1,25 @@
 import posthog from 'posthog-js';
 import { env } from '$env/dynamic/public';
 
+// Kun det ekte nettstedet teller, så lokal utvikling og forhåndsvisninger havner ikke i statistikken
+const PRODUCTION_HOSTS = ['stovnerfrisbee.no', 'www.stovnerfrisbee.no'];
+
+const OPT_OUT_KEY = 'sf-notrack';
+
+// ?notrack slår av sporing i denne nettleseren, ?track slår den på igjen
+function isOptedOut() {
+	try {
+		const params = new URLSearchParams(location.search);
+		if (params.has('notrack')) localStorage.setItem(OPT_OUT_KEY, '1');
+		if (params.has('track')) localStorage.removeItem(OPT_OUT_KEY);
+		return localStorage.getItem(OPT_OUT_KEY) === '1';
+	} catch {
+		return false;
+	}
+}
+
 export function initAnalytics() {
-	if (!env.PUBLIC_POSTHOG_KEY) return;
+	if (!env.PUBLIC_POSTHOG_KEY || !PRODUCTION_HOSTS.includes(location.hostname) || isOptedOut()) return;
 
 	posthog.init(env.PUBLIC_POSTHOG_KEY, {
 		// Proxy i hooks.server.ts

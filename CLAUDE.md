@@ -14,6 +14,10 @@ Website for Stovner Frisbee (stovnerfrisbee.no). The project uses Docker Compose
 
 Design quality is the top priority: the site must stay clean, calm and easy to navigate. Before changing any UI, layout or page content, read `docs/design-principles.md` and follow it. Ask the owner before breaking a rule, and show a mockup before building bigger changes.
 
+## Analytics
+
+Usage statistics (PostHog) are described in `docs/analytics.md`: setup, events, `data-track`/`data-event`, and `?notrack`. Read it before changing tracking or links that should be counted.
+
 ## Visitor profiles
 
 When asked to review a page or feature "from the perspective of our users" (or "our userbase"), use these profiles. Browse the site as each one with Playwright (desktop and phone width), judge whether they find what they came for, and report friction and gaps per profile.
