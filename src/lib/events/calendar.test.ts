@@ -25,6 +25,10 @@ describe('kalender', () => {
 		expect(lines).toContain('SUMMARY:Norges Cup #4 – Stovner');
 		expect(lines).toContain('URL:https://nc.stovnerfrisbee.no/');
 	});
+	it('escapes semicolons and backslashes', () => {
+		const out = toIcs({ ...norgesCup4, location: 'A; B\\C' }, new Date('2026-11-09T12:00:00Z'));
+		expect(out.split('\r\n')).toContain('LOCATION:A\\; B\\\\C');
+	});
 	it('builds a Google Calendar link with exclusive end', () => {
 		const u = new URL(googleCalendarUrl(norgesCup4));
 		expect(u.origin + u.pathname).toBe('https://calendar.google.com/calendar/render');

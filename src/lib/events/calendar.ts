@@ -12,7 +12,7 @@ function dayAfter(date: string): string {
 function escapeText(value: string): string {
 	return value
 		.replaceAll('\\', '\\\\')
-		.replaceAll(';', '\;')
+		.replaceAll(';', '\\;')
 		.replaceAll(',', '\\,')
 		.replaceAll('\n', '\\n');
 }
