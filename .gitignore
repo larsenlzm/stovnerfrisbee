@@ -24,3 +24,6 @@ design/**/*.pdf
 
 # Playwright MCP output
 .playwright-mcp/
+
+# Brainstorming-mockups (superpowers visual companion)
+.superpowers/
