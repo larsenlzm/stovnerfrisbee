@@ -20,6 +20,9 @@
 		'DOUBLES':   'bg-[#1A7A72]/12 text-[#1A7A72]',
 	};
 
+	// Interne lenker åpnes i samme fane og får ikke pil for ekstern side
+	const external = $derived(link.startsWith('http'));
+
 	const tags = $derived(category.split(',').map(t => t.trim()).filter(Boolean));
 
 	function tagClass(tag: string): string {
@@ -55,14 +58,18 @@
 	</div>
 	<div class="flex flex-wrap items-center gap-3">
 		<a  href={link}
-			target="_blank"
-			rel="noopener noreferrer"
+			target={external ? '_blank' : undefined}
+			rel={external ? 'noopener noreferrer' : undefined}
 			class="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-accent)] hover:text-[var(--color-accent-dark)] transition-colors"
 		>
 			{linkText}
-			<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-				<path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-			</svg>
+			{#if external}
+				<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+					<path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			{:else}
+				<span aria-hidden="true">→</span>
+			{/if}
 		</a>
 	</div>
 </div>

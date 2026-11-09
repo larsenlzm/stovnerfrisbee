@@ -107,7 +107,11 @@
 				<div>
 					<p class="text-xl font-semibold tracking-tight text-[var(--color-text)] md:text-2xl">{nextEvent.date}</p>
 					<div class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[var(--color-primary)]">
-						<a href={nextEvent.link} target="_blank" rel="noopener noreferrer" class="hover:underline">{nextEvent.linkText} ↗</a>
+						{#if nextEvent.link.startsWith('http')}
+							<a href={nextEvent.link} target="_blank" rel="noopener noreferrer" class="hover:underline">{nextEvent.linkText} ↗</a>
+						{:else}
+							<a href={nextEvent.link} class="hover:underline">{nextEvent.linkText} →</a>
+						{/if}
 						<a href="/arrangementer" class="hover:underline">Alle arrangementer →</a>
 					</div>
 				</div>

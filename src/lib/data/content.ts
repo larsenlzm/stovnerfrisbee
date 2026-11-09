@@ -149,6 +149,15 @@ export const events = [
 		link: 'https://www.discgolfscene.com/tournament/Discmas_2026',
 		linkText: 'Mer info på DGScene',
 		category: 'Turnering'
+	},
+	{
+		title: 'Norges Cup #4',
+		date: '6.–8. august 2027',
+		endDate: '2027-08-08',
+		description: 'Stovner Frisbeeklubb arrangerer Norges Cup #4 på hjemmebanen. Mer info kommer.',
+		link: '/norges-cup',
+		linkText: 'Til Norges Cup-siden',
+		category: 'Turnering'
 	}
 ];
 
