@@ -33,6 +33,7 @@ export function toIcs(event: EventInfo, now: Date = new Date()): string {
 		`DTSTAMP:${stamp}`,
 		`DTSTART;VALUE=DATE:${compact(event.start)}`,
 		`DTEND;VALUE=DATE:${compact(dayAfter(event.endInclusive))}`,
+		'TRANSP:TRANSPARENT',
 		`SUMMARY:${escapeText(summary(event))}`,
 		`LOCATION:${escapeText(event.location)}`,
 		`DESCRIPTION:${escapeText(description(event))}`,

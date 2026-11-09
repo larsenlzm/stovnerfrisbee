@@ -40,3 +40,20 @@ The Norges Cup #4 page is served at `https://nc.stovnerfrisbee.no` (root rewritt
 3. Wait for Vercel to show "Valid Configuration", then open `https://nc.stovnerfrisbee.no`.
 
 Before DNS is live, the page is available at `/norges-cup` on any deployment.
+
+Test the host routing before DNS is live:
+
+```sh
+npm run build && npm run preview
+curl -H 'Host: nc.stovnerfrisbee.no' http://localhost:4173/            # the Norges Cup page
+curl -sI -H 'Host: nc.stovnerfrisbee.no' http://localhost:4173/om-klubben   # 308 to stovnerfrisbee.no
+```
+
+Post-deploy checklist:
+
+- `https://nc.stovnerfrisbee.no` shows the page.
+- `nc.stovnerfrisbee.no/rocker.jpg` and `/stovnerlogo.jpg` load (the share image depends on it).
+- `nc.stovnerfrisbee.no/om-klubben` redirects to the main site.
+- `nc.stovnerfrisbee.no/norges-cup-4.ics` downloads.
+- PostHog shows events with `$host` = `nc.stovnerfrisbee.no`.
+- Open `nc.stovnerfrisbee.no/?notrack` once on your own devices.

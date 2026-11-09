@@ -16,6 +16,9 @@ describe('kalender', () => {
 		expect(lines).toContain('DTSTART;VALUE=DATE:20270806');
 		expect(lines).toContain('DTEND;VALUE=DATE:20270809');
 	});
+	it('is transparent so it does not block the calendar', () => {
+		expect(lines).toContain('TRANSP:TRANSPARENT');
+	});
 	it('has a fixed UID and the stamp', () => {
 		expect(lines).toContain('UID:norges-cup-4@stovnerfrisbee.no');
 		expect(lines).toContain('DTSTAMP:20261109T120000Z');

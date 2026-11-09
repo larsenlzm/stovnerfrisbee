@@ -4,7 +4,7 @@
 
 	const description = `Stovner Frisbee arrangerer ${event.title} på ${event.place} ${event.dateLabel}. Mer info kommer.`;
 	const title = `${event.title} · ${event.dateLabel} · ${event.place}`;
-	const image = 'https://nc.stovnerfrisbee.no/rocker.jpg';
+	const image = new URL(event.image.src, event.url).href;
 </script>
 
 <svelte:head>
@@ -61,7 +61,7 @@
 				<h1
 					class="mt-2.5 text-[44px] font-extrabold leading-[1.05] tracking-[-0.045em] text-[var(--color-primary-dark)] md:mt-3.5 md:text-[84px]"
 				>
-					Norges Cup <span class="text-[var(--color-accent)]">#4</span>
+					{event.name} <span class="text-[var(--color-accent)]">#{event.number}</span>
 				</h1>
 				<p class="mt-3 max-w-lg text-sm leading-relaxed text-[var(--color-muted)] md:mt-4 md:text-base">
 					{event.intro}
@@ -71,6 +71,7 @@
 					<a
 						href="/norges-cup-4.ics"
 						data-calendar="ics"
+						data-track="nc-ics"
 						data-sveltekit-reload
 						class="flex min-h-12 items-center justify-center rounded-full bg-[var(--color-primary)] px-7 text-sm font-semibold text-white transition-colors hover:bg-[var(--color-primary-dark)] dark:text-[var(--color-bg)]"
 					>
@@ -79,6 +80,7 @@
 					<a
 						href={googleCalendarUrl(event)}
 						data-calendar="google"
+						data-track="nc-google"
 						target="_blank"
 						rel="noopener"
 						class="flex min-h-11 items-center justify-center text-sm font-medium text-[var(--color-primary)] underline decoration-1 underline-offset-4 hover:text-[var(--color-primary-dark)] sm:justify-start"

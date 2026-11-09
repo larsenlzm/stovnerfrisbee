@@ -14,6 +14,7 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 
 - `?notrack` på en hvilken som helst adresse slår av sporing i denne nettleseren (lagres i localStorage som `sf-notrack`).
 - `?track` slår den på igjen.
+- `?notrack` lagres per domene (localStorage), så den må settes separat på `nc.stovnerfrisbee.no`.
 
 ## Hendelser
 
@@ -26,6 +27,8 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 
 Merking i markup:
 
+- `nc.stovnerfrisbee.no` deler stier med hovedsiden (f.eks. `/`), så filtrer eller del opp på `$host` i innsikter.
+- Kalenderlenkene på Norges Cup-siden har `location` `nc-ics` og `nc-google`.
 - `data-track="<navn>"` på en lenke gir `location` (f.eks. `nav-desktop`, `nav-mobile-menu`, `frontpage-hero`). Uten den brukes sidens sti.
 - `data-calendar="ics|google"` på kalenderlenker gir `calendar_click` med `method`. Slike lenker telles ikke i tillegg som `outbound_click`.
 - `data-event="<tittel>"` på en arrangementskort gir `event_title` på klikk inni kortet.
