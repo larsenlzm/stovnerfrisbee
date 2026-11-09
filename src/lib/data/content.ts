@@ -138,6 +138,16 @@ export const events = [
 		link: 'https://www.discgolfscene.com/tournament/Sesongfinalen_pa_Stovner_2026',
 		linkText: 'Mer info på DGScene',
 		category: 'Turnering, PDGA'
+	},
+	{
+		title: 'Discmas 2026',
+		date: '29. november 2026',
+		endDate: '2026-11-29',
+		description:
+			'Adventsgolf med julestemning på Forsheimer DiskGolfPark, arrangert av Team Nordisc. Halvparten av startkontingenten går til Stovner Frisbeeklubb og forbedringer av banen.',
+		link: 'https://www.discgolfscene.com/tournament/Discmas_2026',
+		linkText: 'Mer info på DGScene',
+		category: 'Turnering'
 	}
 ];
 
