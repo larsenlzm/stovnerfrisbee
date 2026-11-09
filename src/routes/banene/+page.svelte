@@ -135,8 +135,7 @@
 	<div class="mt-10 rounded-xl border border-[var(--color-primary)]/25 bg-[var(--color-primary)]/5 p-6">
 		<h3 class="mb-2 font-semibold text-[var(--color-text)]">Gratis å spille</h3>
 		<p class="text-sm leading-relaxed text-[var(--color-muted)]">
-			Banene er åpne og gratis for alle å bruke. Torsdager mellom 17:30 og 20:30 er banen reservert
-			for torsdagsgolf-deltakere. Husk å vise hensyn og rydde etter deg.
+			Banene er åpne og gratis for alle å bruke. Husk å vise hensyn og rydde etter deg.
 		</p>
 	</div>
 </section>

@@ -5,7 +5,10 @@
 
 	const today = new Date().toISOString().slice(0, 10);
 	const upcoming = events.filter(e => !e.endDate || e.endDate >= today);
-	const ended = events.filter(e => e.endDate && e.endDate < today);
+	// Sist avsluttede først
+	const ended = events
+		.filter(e => e.endDate && e.endDate < today)
+		.sort((a, b) => b.endDate!.localeCompare(a.endDate!));
 
 	const eventSchema = {
 		"@context": "https://schema.org",
@@ -38,7 +41,9 @@
 
 <svelte:head>
 	<title>Arrangementer · Stovner Frisbeeklubb</title>
-	{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
+	{#if upcoming.length > 0}
+		{@html `<script type="application/ld+json">${JSON.stringify(eventSchema)}</script>`}
+	{/if}
 </svelte:head>
 
 <PageHeader eyebrow="Kalender" title="Arrangementer" subtitle="Turneringer, ukentlig golf og ligaspill" image="/ncmaster.jpg" alt="Sponsor" />
@@ -46,13 +51,26 @@
 <section class="mx-auto max-w-6xl px-4 py-16">
 	<h2 class="mb-6 text-xl font-semibold text-[var(--color-text)]">
 		Kommende
-		<span class="ml-2 rounded-full bg-[var(--color-primary)]/10 px-2.5 py-0.5 text-sm font-medium text-[var(--color-primary)]">{upcoming.length}</span>
+		{#if upcoming.length > 0}
+			<span class="ml-2 rounded-full bg-[var(--color-primary)]/10 px-2.5 py-0.5 text-sm font-medium text-[var(--color-primary)]">{upcoming.length}</span>
+		{/if}
 	</h2>
-	<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-		{#each upcoming as event}
-			<EventCard {...event} />
-		{/each}
-	</div>
+	{#if upcoming.length > 0}
+		<div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+			{#each upcoming as event}
+				<EventCard {...event} />
+			{/each}
+		</div>
+	{:else}
+		<!-- Utenom sesongen: si hva som skjer og hvor man får beskjed, i stedet for en tom liste -->
+		<p class="max-w-xl leading-relaxed text-[var(--color-muted)]">
+			Ingen arrangementer er satt opp akkurat nå. Nye turneringer legges ut her og på
+			<a href="https://www.discgolfscene.com/course/2776/stovner-disc-golf-park/tournaments" target="_blank" rel="noopener noreferrer" class="font-medium text-[var(--color-primary)] hover:underline">DGScene</a>
+			så snart de er klare. Følg oss på
+			<a href="https://www.facebook.com/Stovnerfrisbeeklubb" target="_blank" rel="noopener noreferrer" class="font-medium text-[var(--color-primary)] hover:underline">Facebook</a>
+			for å få beskjed. Banene er åpne og gratis for alle, så du kan spille når du vil.
+		</p>
+	{/if}
 
 	{#if ended.length > 0}
 		<div class="mt-16">
@@ -71,7 +89,7 @@
 	<!-- External platforms note -->
 	<div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
 		{#each [
-			{ name: 'UDisc', desc: 'Torsdagsgolf og banescorer', href: 'https://udisc.com/events?courseId=ZiBrXtmJjmsj8DWRe', logo: '/udisclogo.png' },
+			{ name: 'UDisc', desc: 'Banescorer og klubbturneringer', href: 'https://udisc.com/events?courseId=ZiBrXtmJjmsj8DWRe', logo: '/udisclogo.png' },
 			{ name: 'Tjing', desc: 'Ligapåmeldinger og resultater', href: 'https://tjing.se/courses/236c64b2-652b-4b8c-aa41-93e2144877c7', logo: '/tjinglogo.png' },
 			{ name: 'DGScene', desc: 'Offisielle turneringer', href: 'https://www.discgolfscene.com/course/2776/stovner-disc-golf-park/tournaments', logo: '/dgscenelogo.jpg' }
 		] as platform}

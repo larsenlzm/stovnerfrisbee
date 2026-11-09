@@ -42,6 +42,7 @@ export const events = [
 	{
 		title: 'Torsdagsgolf',
 		date: 'Hver torsdag 17:30–20:30',
+		endDate: '2026-11-05',
 		description:
 			'Norges eldste ukentlige turnering! Åpen for alle nivåer.',
 		link: 'https://udisc.com/leagues/tordagsgolfen-b4qL0W',

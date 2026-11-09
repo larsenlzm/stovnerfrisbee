@@ -30,8 +30,8 @@
 		<div>
 			<h2 class="mb-2 text-xl font-semibold text-[var(--color-text)]">Prøv sammen med andre</h2>
 			<p class="leading-relaxed text-[var(--color-muted)]">
-				Hver torsdag klokken 17:30–20:30 arrangerer vi Torsdagsgolf, åpent for alle nivåer.
-				Banen er reservert for deltakerne i dette tidsrommet.
+				Gjennom sesongen arrangerer klubben ligaspill og turneringer, og mange av dem passer for alle nivåer.
+				Se hva som er satt opp på arrangementssiden.
 			</p>
 			<a href="/arrangementer" class="mt-3 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">Se arrangementer →</a>
 		</div>
