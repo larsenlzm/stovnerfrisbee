@@ -1,8 +1,9 @@
 import posthog from 'posthog-js';
 import { env } from '$env/dynamic/public';
+import { EVENT_HOST } from '$lib/events/hosts';
 
 // Kun det ekte nettstedet teller, så lokal utvikling og forhåndsvisninger havner ikke i statistikken
-const PRODUCTION_HOSTS = ['stovnerfrisbee.no', 'www.stovnerfrisbee.no'];
+const PRODUCTION_HOSTS = ['stovnerfrisbee.no', 'www.stovnerfrisbee.no', EVENT_HOST];
 
 const OPT_OUT_KEY = 'sf-notrack';
 
@@ -46,6 +47,11 @@ function trackLinkClick(e: MouseEvent) {
 		location: a.dataset.track ?? location.pathname,
 		label: a.textContent?.trim().replace(/\s+/g, ' ')
 	};
+
+	if (a.dataset.calendar) {
+		posthog.capture('calendar_click', { ...props, method: a.dataset.calendar });
+		return;
+	}
 
 	if (url.origin !== location.origin) {
 		posthog.capture('outbound_click', {

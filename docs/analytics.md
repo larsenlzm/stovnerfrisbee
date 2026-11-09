@@ -6,7 +6,7 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 
 - Koden ligger i `src/lib/analytics.ts` og startes fra `src/hooks.client.ts`.
 - Prosjektnøkkelen (`phc_...`) settes som `PUBLIC_POSTHOG_KEY` i Vercel (Production). Den er en offentlig nøkkel som uansett sendes til alle besøkende, så den er ikke hemmelig. Etter endring må det deployes på nytt.
-- Lokal `.env` trengs ikke: sporing er kun på for `stovnerfrisbee.no` og `www.stovnerfrisbee.no`, så lokal utvikling og forhåndsvisninger telles aldri.
+- Lokal `.env` trengs ikke: sporing er kun på for `stovnerfrisbee.no`, `www.stovnerfrisbee.no` og `nc.stovnerfrisbee.no` (Norges Cup-siden), så lokal utvikling og forhåndsvisninger telles aldri.
 - Data går via en proxy på `/sf-data` (`src/hooks.server.ts`) for å komme rundt annonseblokkere.
 - `persistence: 'memory'`: ingen cookies eller localStorage, så vi trenger ikke samtykkebanner. Det gir ingen personprofiler, så anonyme hendelser kan ikke slettes enkeltvis via persons-API-et.
 
@@ -22,10 +22,12 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 | `$pageview` | Sidevisning (også ved navigering i appen) | standard |
 | `outbound_click` | Klikk på lenke til annet domene | `destination`, `href`, `from_path`, `location`, `label`, `event_title` |
 | `member_cta_click` | Klikk på lenke til `/bli-medlem` | `href`, `from_path`, `location`, `label` |
+| `calendar_click` | Klikk på «Legg i kalenderen» eller «Google Kalender» (`data-calendar`) | `href`, `from_path`, `location`, `label`, `method` (`ics`/`google`) |
 
 Merking i markup:
 
 - `data-track="<navn>"` på en lenke gir `location` (f.eks. `nav-desktop`, `nav-mobile-menu`, `frontpage-hero`). Uten den brukes sidens sti.
+- `data-calendar="ics|google"` på kalenderlenker gir `calendar_click` med `method`. Slike lenker telles ikke i tillegg som `outbound_click`.
 - `data-event="<tittel>"` på en arrangementskort gir `event_title` på klikk inni kortet.
 
 Nye eksterne lenker spores automatisk. Legg til `data-track` bare når samme lenke finnes flere steder og vi vil skille dem.

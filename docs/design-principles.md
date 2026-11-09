@@ -57,3 +57,4 @@ Disse reglene leses før enhver endring i UI, layout eller innhold, og gjelder a
 | 2026-11-05 | Ingen tallstripe. |
 | 2026-11-05 | Ingen karusell til å begynne med, ett innrammet bilde. |
 | 2026-11-05 | Menyregelen handler om stil og luft, ikke et fast tak på fem valg. |
+| 2026-11-09 | Arrangementssider på egne subdomener (først nc.stovnerfrisbee.no) har eget uttrykk: vimpler, stor tittel, tekst over bildet, logo som arrangør. Gjelder bare disse sidene. |
