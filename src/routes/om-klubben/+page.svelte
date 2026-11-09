@@ -48,34 +48,36 @@
 	</div>
 </section>
 
-<!-- Board -->
-<section class="mx-auto max-w-6xl px-4 pb-16">
-	<h2 class="mb-8 text-xl font-bold text-[var(--color-text)]">Styret</h2>
-	<div class="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3">
-		{#each boardMembers as member}
-			<div>
-				{#if member.image}
-					<img src={member.image} alt={member.name} width="80" height="80" class="mb-3 h-20 w-20 rounded-full object-cover" loading="lazy" decoding="async" />
-				{:else}
-					<div class="mb-3 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-surface-2)] text-[var(--color-primary)]">
-						<svg width="32" height="32" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-							<circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-							<path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-						</svg>
-					</div>
-				{/if}
-				<p class="font-semibold text-[var(--color-text)]">{member.name || '—'}</p>
-				<p class="text-sm text-[var(--color-primary)]">{member.role}</p>
-				{#if member.email}
-					<a href="mailto:{member.email}" class="mt-1 block break-words text-[13px] text-[var(--color-muted)] sm:text-sm transition-colors hover:text-[var(--color-primary)]">
-						{member.email}
-					</a>
-				{/if}
-			</div>
-		{/each}
-	</div>
-	<p class="mt-10 text-sm text-[var(--color-muted)]">
-		For generelle henvendelser: <a href="mailto:kontakt@stovnerfrisbee.no" class="text-[var(--color-primary)] hover:underline">kontakt@stovnerfrisbee.no</a>
-	</p>
-</section>
+<!-- Styret er et fullbredde bånd som går helt ned til footeren, så layoutens luft (pb-24) nulles ut -->
+<section class="-mb-24 bg-[var(--color-surface-2)]">
+	<div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+		<h2 class="text-xl font-bold text-[var(--color-text)]">Styret</h2>
 
+		<ul class="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+			{#each boardMembers as member}
+				<li>
+					<img
+						src={member.image}
+						alt={member.name}
+						width="400"
+						height="400"
+						class="aspect-square w-full rounded-2xl object-cover"
+						loading="lazy"
+						decoding="async"
+					/>
+					<p class="mt-4 font-semibold text-[var(--color-text)]">{member.name}</p>
+					<p class="text-sm text-[var(--color-primary)]">{member.role}</p>
+					{#if member.email}
+						<a href="mailto:{member.email}" class="mt-1 block break-words text-[13px] text-[var(--color-muted)] transition-colors hover:text-[var(--color-primary)]">
+							{member.email}
+						</a>
+					{/if}
+				</li>
+			{/each}
+		</ul>
+
+		<p class="mt-14 text-sm text-[var(--color-muted)]">
+			For generelle henvendelser: <a href="mailto:kontakt@stovnerfrisbee.no" class="text-[var(--color-primary)] hover:underline">kontakt@stovnerfrisbee.no</a>
+		</p>
+	</div>
+</section>

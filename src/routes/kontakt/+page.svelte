@@ -70,5 +70,4 @@
 		</div>
 	</div>
 
-	<p class="mt-16 text-sm text-[var(--color-muted)]">Idas vei 35, 0981 Oslo · Org.nr. 894 417 382</p>
 </section>
