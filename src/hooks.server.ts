@@ -1,9 +1,14 @@
 import type { Handle } from '@sveltejs/kit';
+import { eventHostRedirect } from '$lib/events/hosts';
 
 // Videresender PostHog-trafikk via eget domene, så adblockere ikke stopper den
 const PROXY_PATH = '/sf-data';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	// Arrangementsdomenet viser bare Norges Cup-siden; alt annet går til hovedsiden
+	const target = eventHostRedirect(event.url);
+	if (target) return new Response(null, { status: 308, headers: { location: target } });
+
 	const { pathname, search } = event.url;
 	if (!pathname.startsWith(`${PROXY_PATH}/`)) return resolve(event);
 
