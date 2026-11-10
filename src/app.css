@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @custom-variant dark {
+	/* Systemets mørke tema gjelder bare når siden ikke er satt til lyst, heller ikke på et forelder-element */
 	@media (prefers-color-scheme: dark) {
-		&:where(:not([data-theme="light"])) { @slot; }
+		&:where(:not([data-theme="light"], [data-theme="light"] *)) { @slot; }
 	}
 	&:where([data-theme="dark"], [data-theme="dark"] *) { @slot; }
 }
