@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { liveEvent, osloToday } from './live';
+import { liveEvent, nextDay, osloToday } from './live';
 
 const tournament = {
 	title: 'Discmas 2026',
@@ -20,18 +20,37 @@ describe('osloToday', () => {
 	});
 });
 
+describe('nextDay', () => {
+	it('crosses month and year boundaries', () => {
+		expect(nextDay('2026-11-30')).toBe('2026-12-01');
+		expect(nextDay('2026-12-31')).toBe('2027-01-01');
+	});
+});
+
 describe('liveEvent', () => {
 	it('finds a tournament on its day', () => {
-		expect(liveEvent([tournament], '2026-11-29')?.title).toBe('Discmas 2026');
+		expect(liveEvent([tournament], '2026-11-29')?.event.title).toBe('Discmas 2026');
 	});
 
 	it('is live on every day of a multi-day event', () => {
-		expect(liveEvent([twoDays], '2026-05-30')?.title).toBe('Stovner Open');
-		expect(liveEvent([twoDays], '2026-05-31')?.title).toBe('Stovner Open');
+		expect(liveEvent([twoDays], '2026-05-30')?.event.title).toBe('Stovner Open');
+		expect(liveEvent([twoDays], '2026-05-31')?.event.title).toBe('Stovner Open');
 	});
 
-	it('is not live before or after', () => {
-		expect(liveEvent([tournament, twoDays], '2026-11-28')).toBeUndefined();
+	it('reports today or tomorrow', () => {
+		expect(liveEvent([tournament], '2026-11-29')?.when).toBe('today');
+		expect(liveEvent([tournament], '2026-11-28')?.when).toBe('tomorrow');
+		expect(liveEvent([twoDays], '2026-05-29')?.when).toBe('tomorrow');
+		expect(liveEvent([twoDays], '2026-05-31')?.when).toBe('today');
+	});
+
+	it('prefers an event today over one tomorrow', () => {
+		const tomorrow = { ...tournament, title: 'I morgen', startDate: '2026-11-30', endDate: '2026-11-30' };
+		expect(liveEvent([tomorrow, tournament], '2026-11-29')?.event.title).toBe('Discmas 2026');
+	});
+
+	it('is not shown two days before or after', () => {
+		expect(liveEvent([tournament, twoDays], '2026-11-27')).toBeUndefined();
 		expect(liveEvent([tournament, twoDays], '2026-11-30')).toBeUndefined();
 	});
 

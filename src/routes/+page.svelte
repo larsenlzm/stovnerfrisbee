@@ -4,8 +4,9 @@
 	import { liveEvent, osloToday } from '$lib/events/live';
 
 	const today = osloToday();
-	const live = liveEvent(events, today);
-	// Det som pågår vises i stripen, så «Neste arrangement» hopper over det
+	const current = liveEvent(events, today);
+	const live = current?.event;
+	// Det som vises i stripen, hopper «Neste arrangement» over
 	const upcomingEvents = events.filter(e => (!e.endDate || e.endDate >= today) && e !== live);
 	const nextEvent = upcomingEvents[0];
 
@@ -56,16 +57,16 @@
 	})}</script>`}
 </svelte:head>
 
-<!-- Pågår nå: bare de dagene en turnering bruker en av klubbens baner -->
-{#if live}
+<!-- Pågår nå / I morgen: dagen før og de dagene en turnering bruker en av klubbens baner -->
+{#if current && live}
 	<div data-event={live.title} class="border-b border-[var(--color-accent)]/25 bg-[var(--color-accent)]/10">
 		<div class="mx-auto flex max-w-6xl flex-col gap-1.5 px-4 py-3 text-[15px] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
 			<p class="text-[var(--color-text)]">
 				<span class="mr-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-accent-dark)]">
 					<span class="h-2 w-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-					Pågår nå
+					{current.when === 'today' ? 'Pågår nå' : 'I morgen'}
 				</span>
-				<span class="font-semibold">{live.title}</span> på {live.course} i dag.
+				<span class="font-semibold">{live.title}</span> på {live.course} {current.when === 'today' ? 'i dag' : 'i morgen'}.
 				<span class="text-[var(--color-muted)]">Banen kan være stengt for andre spillere under arrangementet.</span>
 			</p>
 			{#if live.link.startsWith('http')}
