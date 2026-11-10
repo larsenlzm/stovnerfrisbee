@@ -53,3 +53,11 @@ export function liveEvent<T extends DatedEvent>(
 	);
 	return soon ? { event: soon, when: 'tomorrow' } : undefined;
 }
+
+// Samme som liveEvent, men bare for arrangementer på én bane (status på banekortene)
+export function liveEventAt<T extends DatedEvent>(events: T[], course: string, today: string) {
+	return liveEvent(
+		events.filter((e) => e.course === course),
+		today
+	);
+}

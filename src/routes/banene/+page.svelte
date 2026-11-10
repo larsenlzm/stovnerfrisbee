@@ -1,6 +1,9 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/PageHeader.svelte';
-	import { courses } from '$lib/data/content';
+	import { courses, events } from '$lib/data/content';
+	import { liveEventAt, osloToday } from '$lib/events/live';
+
+	const today = osloToday();
 
 	function formatRoundTime(minutes: number): string {
 		const h = Math.floor(minutes / 60);
@@ -33,6 +36,7 @@
 <section class="mx-auto max-w-6xl px-4 py-16">
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 		{#each courses as course}
+			{@const status = liveEventAt(events, course.eventCourse ?? course.name, today)}
 			<div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 md:p-8">
 				<!-- Header -->
 				<div class="mb-1 flex items-start justify-between gap-4">
@@ -70,6 +74,24 @@
 					</span>
 					<span class="text-sm font-medium text-[var(--color-text)]">{course.rating.toFixed(1)}</span>
 					<span class="text-sm text-[var(--color-muted)]">({course.ratingCount.toLocaleString('nb-NO')} anmeldelser)</span>
+				</div>
+
+				<!-- Status: arrangement på banen i dag eller i morgen, samme regler som «Pågår nå»-stripen på forsiden -->
+				<div data-event={status?.event.title} class="mb-4 flex items-start gap-2 text-sm">
+					<span class="mt-1.5 h-2 w-2 shrink-0 rounded-full {status ? 'bg-[var(--color-accent)]' : 'bg-[var(--color-primary)]'}" aria-hidden="true"></span>
+					{#if status}
+						<p class="text-[var(--color-text)]">
+							<span class="font-semibold">{status.when === 'today' ? 'I dag' : 'I morgen'}: {status.event.title}.</span>
+							<span class="text-[var(--color-muted)]">Banen kan være stengt for andre spillere.</span>
+							{#if status.event.link.startsWith('http')}
+								<a href={status.event.link} target="_blank" rel="noopener noreferrer" data-track="banene-status" class="font-semibold text-[var(--color-primary)] hover:underline">Mer info<span class="sr-only"> om {status.event.title} (åpnes i ny fane)</span> <span aria-hidden="true">↗</span></a>
+							{:else}
+								<a href={status.event.link} data-track="banene-status" class="font-semibold text-[var(--color-primary)] hover:underline">Mer info<span class="sr-only"> om {status.event.title}</span> <span aria-hidden="true">→</span></a>
+							{/if}
+						</p>
+					{:else}
+						<p class="text-[var(--color-muted)]">Ingen arrangementer på banen i dag eller i morgen.</p>
+					{/if}
 				</div>
 
 				<p class="mb-6 text-sm leading-relaxed text-[var(--color-muted)]">{course.description}</p>
@@ -132,7 +154,7 @@
 						rel="noopener noreferrer"
 						class="inline-flex items-center gap-2 rounded-lg border border-[var(--color-border)] px-4 py-2 text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
 					>
-						Kart ↗
+						Kart til hull 1 ↗
 					</a>
 				</div>
 			</div>
@@ -145,5 +167,6 @@
 		<p class="text-sm leading-relaxed text-[var(--color-muted)]">
 			Banene er åpne og gratis for alle å bruke. Husk å vise hensyn og rydde etter deg.
 		</p>
+		<a href="/ny-til-discgolf" class="mt-3 inline-block text-sm font-semibold text-[var(--color-primary)] hover:underline">Første gang? Slik spiller du discgolf <span aria-hidden="true">→</span></a>
 	</div>
 </section>

@@ -24,6 +24,8 @@ export const courses = [
 	},
 	{
 		name: 'Forsheimer DiscgolfPark 2023',
+		// Navnet arrangementene bruker i `course`
+		eventCourse: 'Forsheimer DiskGolfPark',
 		description:
 			'18-hulls bane ved Forsheimer med utfordrende terreng og stor høydeforskjell.',
 		holes: 18,

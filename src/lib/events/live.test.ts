@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { liveEvent, nextDay, osloToday } from './live';
+import { liveEvent, liveEventAt, nextDay, osloToday } from './live';
 
 const tournament = {
 	title: 'Discmas 2026',
@@ -93,5 +93,13 @@ describe('liveEvent for weekly leagues', () => {
 	it('prefers anything today over a tournament tomorrow', () => {
 		const thursday = { ...tournament, title: 'Torsdagsturnering', startDate: '2026-09-03', endDate: '2026-09-03' };
 		expect(liveEvent([thursday, league], '2026-09-02')).toMatchObject({ event: { title: 'Høstligaen' }, when: 'today' });
+	});
+});
+
+describe('liveEventAt', () => {
+	it('only looks at events on the given course', () => {
+		expect(liveEventAt([tournament, twoDays], 'Stovner Discgolfpark', '2026-05-30')?.event.title).toBe('Stovner Open');
+		expect(liveEventAt([tournament, twoDays], 'Stovner Discgolfpark', '2026-11-29')).toBeUndefined();
+		expect(liveEventAt([tournament, twoDays], 'Forsheimer DiskGolfPark', '2026-11-28')).toMatchObject({ event: { title: 'Discmas 2026' }, when: 'tomorrow' });
 	});
 });

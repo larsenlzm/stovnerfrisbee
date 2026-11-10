@@ -29,7 +29,7 @@ Merking i markup:
 
 - `nc.stovnerfrisbee.no` deler stier med hovedsiden (f.eks. `/`), så filtrer eller del opp på `$host` i innsikter.
 - Kalenderlenkene på Norges Cup-siden har `location` `nc-ics` og `nc-google`.
-- `data-track="<navn>"` på en lenke gir `location` (f.eks. `nav-desktop`, `nav-mobile-menu`, `frontpage-hero`, `frontpage-live` for «Pågår nå»-stripen). Uten den brukes sidens sti.
+- `data-track="<navn>"` på en lenke gir `location` (f.eks. `nav-desktop`, `nav-mobile-menu`, `frontpage-hero`, `frontpage-live` for «Pågår nå»-stripen, `banene-status` for statuslinjen på banekortene). Uten den brukes sidens sti.
 - `data-calendar="ics|google"` på kalenderlenker gir `calendar_click` med `method`. Slike lenker telles ikke i tillegg som `outbound_click`.
 - `data-event="<tittel>"` på en arrangementskort gir `event_title` på klikk inni kortet.
 
