@@ -60,6 +60,8 @@ export const events = [
 		startDate: '2026-04-29',
 		endDate: '2026-06-17',
 		course: 'Stovner Discgolfpark',
+		// Spilles onsdager (0 = søndag)
+		weekday: 3,
 		description:
 			'8 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
 		link: 'https://tjing.se/tour/3fa54bea-456c-4e48-b75c-6748ad2a1b00/',
@@ -121,6 +123,8 @@ export const events = [
 		startDate: '2026-08-12',
 		endDate: '2026-09-16',
 		course: 'Stovner Discgolfpark',
+		// Spilles onsdager (0 = søndag)
+		weekday: 3,
 		description:
 			'6 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
 		link: 'https://tjing.se/tour/35f47def-f801-4861-9528-912673606e10/events',
