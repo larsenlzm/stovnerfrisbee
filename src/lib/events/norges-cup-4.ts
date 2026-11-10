@@ -16,5 +16,10 @@ export const norgesCup4: EventInfo = {
 		src: '/rocker.jpg',
 		alt: 'Discgolfkurv med gult flagg på Stovner',
 		position: '50% 58%'
+	},
+	// Lages fra scripts/og/nc-share.html
+	shareImage: {
+		src: '/nc-share.jpg',
+		alt: 'Norges Cup #4, 6.–8. august 2027 på Stovner'
 	}
 };

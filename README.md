@@ -52,7 +52,7 @@ curl -sI -H 'Host: nc.stovnerfrisbee.no' http://localhost:4173/om-klubben   # 30
 Post-deploy checklist:
 
 - `https://nc.stovnerfrisbee.no` shows the page.
-- `nc.stovnerfrisbee.no/rocker.jpg` and `/stovnerlogo.jpg` load (the share image depends on it).
+- `nc.stovnerfrisbee.no/nc-share.jpg`, `/rocker.jpg` and `/stovnerlogo.jpg` load (`nc-share.jpg` is the share image).
 - `nc.stovnerfrisbee.no/om-klubben` redirects to the main site.
 - `nc.stovnerfrisbee.no/norges-cup-4.ics` downloads.
 - PostHog shows events with `$host` = `nc.stovnerfrisbee.no`.

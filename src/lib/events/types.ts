@@ -13,4 +13,6 @@ export interface EventInfo {
 	url: string;
 	intro: string;
 	image: { src: string; alt: string; position: string };
+	/** Delingsbilde (Open Graph), 1200×630 */
+	shareImage: { src: string; alt: string };
 }

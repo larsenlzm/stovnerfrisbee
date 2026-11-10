@@ -4,7 +4,8 @@
 
 	const description = `Stovner Frisbee arrangerer ${event.title} på ${event.place} ${event.dateLabel}. Mer info kommer.`;
 	const title = `${event.title} · ${event.dateLabel} · ${event.place}`;
-	const image = new URL(event.image.src, event.url).href;
+	const shareTitle = `${event.title} på ${event.place}`;
+	const shareImage = new URL(event.shareImage.src, event.url).href;
 </script>
 
 <svelte:head>
@@ -12,10 +13,14 @@
 	<meta name="description" content={description} />
 	<link rel="canonical" href={event.url} />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={title} />
+	<meta property="og:site_name" content="Stovner Frisbee" />
+	<meta property="og:title" content={shareTitle} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={event.url} />
-	<meta property="og:image" content={image} />
+	<meta property="og:image" content={shareImage} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content={event.shareImage.alt} />
 	<meta property="og:locale" content="nb_NO" />
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
