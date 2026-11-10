@@ -19,8 +19,20 @@ function isOptedOut() {
 	}
 }
 
+// Rød strek øverst i nettlesere med ?notrack, så eier ser at egne besøk ikke telles. Besøkende ser den aldri.
+function showOptOutLine() {
+	const line = document.createElement('div');
+	line.title = 'Sporing er av i denne nettleseren (?track slår den på igjen)';
+	line.style.cssText = 'position:fixed;top:0;left:0;right:0;height:4px;background:red;z-index:9999';
+	document.body.append(line);
+}
+
 export function initAnalytics() {
-	if (!env.PUBLIC_POSTHOG_KEY || !PRODUCTION_HOSTS.includes(location.hostname) || isOptedOut()) return;
+	if (isOptedOut()) {
+		showOptOutLine();
+		return;
+	}
+	if (!env.PUBLIC_POSTHOG_KEY || !PRODUCTION_HOSTS.includes(location.hostname)) return;
 
 	posthog.init(env.PUBLIC_POSTHOG_KEY, {
 		// Proxy i hooks.server.ts
