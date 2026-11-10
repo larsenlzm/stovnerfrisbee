@@ -1,9 +1,12 @@
 <script lang="ts">
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { events } from '$lib/data/content';
+	import { liveEvent, osloToday } from '$lib/events/live';
 
-	const today = new Date().toISOString().slice(0, 10);
-	const upcomingEvents = events.filter(e => !e.endDate || e.endDate >= today);
+	const today = osloToday();
+	const live = liveEvent(events, today);
+	// Det som pågår vises i stripen, så «Neste arrangement» hopper over det
+	const upcomingEvents = events.filter(e => (!e.endDate || e.endDate >= today) && e !== live);
 	const nextEvent = upcomingEvents[0];
 
 	const cards = [
@@ -52,6 +55,27 @@
 		}
 	})}</script>`}
 </svelte:head>
+
+<!-- Pågår nå: bare de dagene en turnering bruker en av klubbens baner -->
+{#if live}
+	<div data-event={live.title} class="border-b border-[var(--color-accent)]/25 bg-[var(--color-accent)]/10">
+		<div class="mx-auto flex max-w-6xl flex-col gap-1.5 px-4 py-3 text-[15px] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+			<p class="text-[var(--color-text)]">
+				<span class="mr-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-accent-dark)]">
+					<span class="h-2 w-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+					Pågår nå
+				</span>
+				<span class="font-semibold">{live.title}</span> på {live.course} i dag.
+				<span class="text-[var(--color-muted)]">Banen kan være stengt for andre spillere under arrangementet.</span>
+			</p>
+			{#if live.link.startsWith('http')}
+				<a href={live.link} target="_blank" rel="noopener noreferrer" data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info ↗</a>
+			{:else}
+				<a href={live.link} data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info →</a>
+			{/if}
+		</div>
+	</div>
+{/if}
 
 <!-- Hero -->
 <section class="mx-auto max-w-6xl px-4 pt-3">
@@ -106,6 +130,9 @@
 				</div>
 				<div>
 					<p class="text-xl font-semibold tracking-tight text-[var(--color-text)] md:text-2xl">{nextEvent.date}</p>
+					{#if nextEvent.course}
+						<p class="mt-1 text-[15px] text-[var(--color-muted)]">{nextEvent.course}</p>
+					{/if}
 					<div class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-[var(--color-primary)]">
 						{#if nextEvent.link.startsWith('http')}
 							<a href={nextEvent.link} target="_blank" rel="noopener noreferrer" class="hover:underline">{nextEvent.linkText} ↗</a>

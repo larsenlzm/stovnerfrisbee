@@ -2,8 +2,9 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EventCard from '$lib/components/EventCard.svelte';
 	import { events } from '$lib/data/content';
+	import { osloToday } from '$lib/events/live';
 
-	const today = new Date().toISOString().slice(0, 10);
+	const today = osloToday();
 	const upcoming = events.filter(e => !e.endDate || e.endDate >= today);
 	// Sist avsluttede først
 	const ended = events
@@ -16,13 +17,13 @@
 			"@type": "SportsEvent",
 			"name": e.title,
 			"description": e.description,
-			"startDate": e.endDate ?? undefined,
+			"startDate": e.startDate ?? e.endDate ?? undefined,
 			"endDate": e.endDate ?? undefined,
 			"eventStatus": "https://schema.org/EventScheduled",
 			"eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
 			"location": {
 				"@type": "Place",
-				"name": "Stovner Discgolfpark",
+				"name": e.course ?? "Stovner Discgolfpark",
 				"address": {
 					"@type": "PostalAddress",
 					"addressLocality": "Oslo",

@@ -57,7 +57,9 @@ export const events = [
 	{
 		title: 'Vårligaen 2026',
 		date: 'Onsdager 29. apr – 17. jun',
+		startDate: '2026-04-29',
 		endDate: '2026-06-17',
+		course: 'Stovner Discgolfpark',
 		description:
 			'8 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
 		link: 'https://tjing.se/tour/3fa54bea-456c-4e48-b75c-6748ad2a1b00/',
@@ -68,7 +70,9 @@ export const events = [
 	{
 		title: 'Stovner Open 2026',
 		date: '30.–31. mai 2026',
+		startDate: '2026-05-30',
 		endDate: '2026-05-31',
+		course: 'Stovner Discgolfpark',
 		description:
 			'Årets store turnering på hjemmebanen — PDGA C-tier.',
 		link: 'https://www.discgolfscene.com/tournaments/Stovner_Open_2026',
@@ -78,7 +82,9 @@ export const events = [
 	{
 		title: 'ODGC Flex Start Stovner',
 		date: '15. juni 2026',
+		startDate: '2026-06-15',
 		endDate: '2026-06-15',
+		course: 'Stovner Discgolfpark',
 		description:
 			'Flex start-turnering på Stovner arrangert av ODGC. Passer godt for å teste formen midt i sesongen.',
 		link: 'https://www.discgolfscene.com/tournaments/ODGC_Flex_Start_Stovner_2026',
@@ -88,7 +94,9 @@ export const events = [
 	{
 		title: 'Oslo Disc Golf Classic 2026',
 		date: '20.–21. juni 2026',
+		startDate: '2026-06-20',
 		endDate: '2026-06-21',
+		course: 'Stovner Discgolfpark',
 		description:
 			'PDGA B-tier presentert av MVP Disc Sports og Team Nordisc. En runde spilles på Stovner Discgolfpark, en runde på Holmenkollen.',
 		link: 'https://www.discgolfscene.com/tournament/Nordisc_Tour_3rd_annual_Oslo_Disc_Golf_Classic_2026',
@@ -98,7 +106,9 @@ export const events = [
 	{
 		title: 'Stovner Doubles 2026',
 		date: '25. juli 2026',
+		startDate: '2026-07-25',
 		endDate: '2026-07-25',
+		course: 'Stovner Discgolfpark',
 		description:
 			'Doubles-turnering på Stovner. Finn deg en partner og still til start i sommervarmen!',
 		link: 'https://www.discgolfscene.com/tournaments/Stovner_Doubles_2026',
@@ -108,7 +118,9 @@ export const events = [
 	{
 		title: 'Høstligaen 2026',
 		date: 'Onsdager 12. aug – 16. sep',
+		startDate: '2026-08-12',
 		endDate: '2026-09-16',
+		course: 'Stovner Discgolfpark',
 		description:
 			'6 runder ligaspill på Stovner, presentert av Stovner Frisbeeklubb og Team Innova Norge.',
 		link: 'https://tjing.se/tour/35f47def-f801-4861-9528-912673606e10/events',
@@ -118,7 +130,9 @@ export const events = [
 	{
 		title: 'HyzerTour Stovner 2026',
 		date: '22.–23. august 2026',
+		startDate: '2026-08-22',
 		endDate: '2026-08-23',
+		course: 'Stovner Discgolfpark',
 		description:
 			'PDGA C-tier presentert av HyzerShop.no. En av de store sommerturneringene på Stovner Discgolfpark.',
 		link: 'https://www.discgolfscene.com/tournaments/HyzerTour_Stovner_2026_presented_by_HyzerShop_no',
@@ -128,7 +142,9 @@ export const events = [
 	{
 		title: 'Klubbmesterskap 2026',
 		date: '30. august 2026',
+		startDate: '2026-08-30',
 		endDate: '2026-08-30',
+		course: 'Stovner Discgolfpark',
 		description:
 			'Stovner Frisbeeklubbs klubbmesterskap – 2 runder på hjemmebanen, åpent for alle divisjoner.',
 		link: 'https://udisc.com/events/klubbmesterskap-stovner-frisbeeklubb-2026-vv8hhl/about',
@@ -138,7 +154,9 @@ export const events = [
 	{
 		title: 'Sesongfinalen på Stovner 2026',
 		date: '20. september 2026',
+		startDate: '2026-09-20',
 		endDate: '2026-09-20',
+		course: 'Stovner Discgolfpark',
 		description:
 			'PDGA C-tier – sesongens avsluttende turnering på hjemmebanen, to runder med shotgunstart.',
 		link: 'https://www.discgolfscene.com/tournament/Sesongfinalen_pa_Stovner_2026',
@@ -148,7 +166,9 @@ export const events = [
 	{
 		title: 'Discmas 2026',
 		date: '29. november 2026',
+		startDate: '2026-11-29',
 		endDate: '2026-11-29',
+		course: 'Forsheimer DiskGolfPark',
 		description:
 			'Adventsgolf med julestemning på Forsheimer DiskGolfPark, arrangert av Team Nordisc. Halvparten av startkontingenten går til Stovner Frisbeeklubb og forbedringer av banen.',
 		link: 'https://www.discgolfscene.com/tournament/Discmas_2026',
@@ -158,7 +178,9 @@ export const events = [
 	{
 		title: 'Norges Cup #4',
 		date: '6.–8. august 2027',
+		startDate: '2027-08-06',
 		endDate: '2027-08-08',
+		course: 'Stovner Discgolfpark',
 		description: 'Stovner Frisbeeklubb arrangerer Norges Cup #4 på hjemmebanen. Mer info kommer.',
 		link: '/norges-cup',
 		linkText: 'Til Norges Cup-siden',
