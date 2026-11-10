@@ -105,6 +105,14 @@
 					{/each}
 				</div>
 
+				<!-- Veibeskrivelse -->
+				<div class="mb-6">
+					<p class="text-sm font-semibold text-[var(--color-text)]">Slik kommer du deg hit</p>
+					{#each course.directions as line}
+						<p class="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">{line}</p>
+					{/each}
+				</div>
+
 				<!-- Basket/tee info -->
 				<p class="mb-6 text-xs text-[var(--color-muted)]">Kurver: {course.baskets} · Tee: {course.tees}</p>
 

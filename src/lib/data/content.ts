@@ -16,6 +16,10 @@ export const courses = [
 		tees: 'Kunstgress',
 		amenities: { dogs: true, cart: true, stroller: true, restrooms: false, water: false },
 		udiscLink: 'https://udisc.com/courses/stovner-discgolfpark-iohl',
+		directions: [
+			'T-bane linje 5 til Rommen, ca. 6 minutter å gå til banen.',
+			'Med bil: parker ved Rommen skole og kultursenter, Karen Platous vei 31. Sjekk skiltingen og følg parkeringsreglene der.'
+		],
 		coords: { lat: 59.967007, lng: 10.915872 }
 	},
 	{
@@ -34,6 +38,7 @@ export const courses = [
 		tees: 'Kunstgress',
 		amenities: { dogs: true, cart: false, stroller: false, restrooms: false, water: false },
 		udiscLink: 'https://udisc.com/courses/forsheimer-discgolf-park-2023-NtdI',
+		directions: ['T-bane linje 5 til Rommen eller Stovner, ca. 10 minutter å gå til banen.'],
 		coords: { lat: 59.957847, lng: 10.9149 }
 	}
 ];

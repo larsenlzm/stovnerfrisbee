@@ -1,6 +1,20 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { boardMembers } from '$lib/data/content';
+
+	const milestones = [
+		{ year: 1985, text: 'Stovner Frisbeeklubb stiftes 7. august.' },
+		{ year: 1993, text: 'Banen på Stovner bygges med hjemmesveisede kurver, etter ett år med spilling på pinner.' },
+		{ year: 2000, text: 'Oslo Open blir Norges første PDGA-sanksjonerte turnering.' },
+		{ year: 2001, text: 'Oslo Open arrangeres som EM i discgolf, Norges første B-tier.' },
+		{ year: 2012, text: 'Oslo Open blir Norges første A-tier.' },
+		{ year: 2012, text: 'Forsheimer DiskGolfPark åpner.' },
+		{ year: 2018, text: 'NM i discgolf på Stovner.' },
+		{ year: 2021, text: 'Norges første ukesgolf som PDGA League.' },
+		{ year: 2022, text: 'NM i discgolf på Stovner.' },
+		{ year: 2025, text: 'Klubben fyller 40 år.' },
+		{ year: 2027, text: 'Norges Cup #4 på Stovner.' }
+	];
 </script>
 
 <svelte:head>
@@ -45,6 +59,40 @@
 				{/each}
 			</dl>
 		</div>
+	</div>
+</section>
+
+<!-- Milepæler: en ekte tidslinje, så årstallene får egen kolonne -->
+<section class="mx-auto max-w-6xl px-4 pb-16">
+	<div class="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:gap-16">
+		<div class="max-w-2xl">
+			<h2 class="text-xl font-bold text-[var(--color-text)]">Milepæler</h2>
+			<p class="mt-3 leading-relaxed text-[var(--color-muted)]">
+				Klubben har fostret verdensmestere, europamestere og norgesmestere, men holder fast ved røttene: lave skuldre, alle skal med, og det skal være moro.
+			</p>
+			<ol class="mt-8 space-y-3.5">
+				{#each milestones as m}
+					<li class="grid grid-cols-[3.5rem_1fr] gap-x-4">
+						<span class="font-bold tabular-nums text-[var(--color-primary)]">{m.year}</span>
+						<span class="leading-relaxed text-[var(--color-muted)]">{m.text}</span>
+					</li>
+				{/each}
+			</ol>
+			<p class="mt-8 text-sm text-[var(--color-muted)]">
+				Nasjonale førstegangsår fra <a href="https://dgno.no/milepaeler" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">dgno.no</a>.
+			</p>
+		</div>
+		<!-- Svart strektegning: alltid på hvit rund bunn, som logoen i menyen, så den leses i begge temaer -->
+		<img
+			src="/arkiv/stovner-disc-club-logo.png"
+			alt="Fra arkivet: et gammelt klubbmerke (Stovner Disc Club, Frisbee Team Oslo, Norway)"
+			title="Fra arkivet: et gammelt klubbmerke"
+			width="720"
+			height="716"
+			class="h-40 w-40 rounded-full bg-white p-3 md:mt-12 md:h-52 md:w-52"
+			loading="lazy"
+			decoding="async"
+		/>
 	</div>
 </section>
 

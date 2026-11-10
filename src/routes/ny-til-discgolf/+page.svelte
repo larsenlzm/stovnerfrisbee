@@ -21,6 +21,8 @@
 		'Kast aldri hvis du kan treffe mennesker eller dyr.',
 		'Går et kast mot noen, rop «FORE!» så høyt du kan.',
 		'Stå stille og vær stille når andre kaster.',
+		'Vent til gruppen foran er ferdig med hullet før du kaster.',
+		'Vil du gå forbi en gruppe, spør dem først.',
 		'Ta med deg søppel og tomgods hjem.'
 	];
 
@@ -61,13 +63,16 @@
 			</p>
 		</div>
 
-		<div>
-			<h2 class="mb-2 text-xl font-semibold text-[var(--color-text)]">Hvor kan du spille?</h2>
-			<p class="leading-relaxed text-[var(--color-muted)]">
-				Stovner Discgolfpark er en 18-hulls bane i Stovnerlia. En runde tar omtrent to timer, og banen er vurdert som vanskelig.
-				Banene våre er åpne og gratis for alle. Du kan ha med hund, vogn og barnevogn, men det er ikke toalett eller vann på banen.
-			</p>
-			<a href="/banene" class="mt-3 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">Se banene →</a>
+		<div class="grid gap-6 md:grid-cols-[1fr_15rem] md:gap-10">
+			<div>
+				<h2 class="mb-2 text-xl font-semibold text-[var(--color-text)]">Hvor kan du spille?</h2>
+				<p class="leading-relaxed text-[var(--color-muted)]">
+					Stovner Discgolfpark er en 18-hulls bane i Stovnerlia. En runde tar omtrent to timer, og banen er vurdert som vanskelig.
+					Banene våre er åpne og gratis for alle. Du kan ha med hund, vogn og barnevogn, men det er ikke toalett eller vann på banen.
+				</p>
+				<a href="/banene" class="mt-3 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">Se banene →</a>
+			</div>
+			<img src="/arkiv/kurv-stovner.jpg" alt="Kurv med gult flagg mellom trærne på Stovner" width="640" height="640" class="aspect-square w-full max-w-[15rem] rounded-2xl object-cover" loading="lazy" decoding="async" />
 		</div>
 
 		<div>
@@ -97,6 +102,7 @@
 
 		<div>
 			<h2 class="text-xl font-semibold text-[var(--color-text)]">Vis hensyn</h2>
+			<p class="mt-2 leading-relaxed text-[var(--color-muted)]">Discgolf har en lang tradisjon for fair play, der spillerne selv passer på reglene.</p>
 			<ul class="mt-5 space-y-2.5">
 				{#each etiquette as line}
 					<li class="flex gap-3 leading-relaxed text-[var(--color-muted)]">

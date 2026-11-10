@@ -35,8 +35,10 @@
 
 			<div class="mt-5 max-w-lg space-y-4 leading-relaxed text-[var(--color-muted)]">
 				<p>
-					Stovner Frisbeeklubb er en aktiv lokalidrettsklubb med røtter tilbake til 1985. Vi arrangerer
-					turneringer, driver baner og skaper aktivitet i Groruddalen.
+					Stovner Frisbeeklubb er en aktiv lokalidrettsklubb med røtter tilbake til 1985 og medlem av Norges
+					idrettsforbund gjennom Oslo idrettskrets. Vi driver to baner og arrangerer ligaer, turneringer og
+					klubbmesterskap, i samarbeid med blant andre Sune Sport/WE ARE DISC GOLF, Stovner Rockefabrikk og
+					Bydel Stovner.
 				</p>
 				<p>
 					Som sponsor får du synlighet overfor et engasjert og voksende discgolfmiljø i Oslo-regionen. Vi er
@@ -53,21 +55,6 @@
 					<path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			</a>
-
-			<h3 class="mt-12 font-semibold text-[var(--color-text)]">Grasrotandelen</h3>
-			<p class="mt-2 max-w-lg leading-relaxed text-[var(--color-muted)]">
-				Spiller du på Norsk Tipping? Du kan velge å gi en del av innsatsen din til Stovner Frisbeeklubb
-				gjennom Grasrotandelen — helt gratis for deg.
-			</p>
-			<a
-				href="https://www.norsk-tipping.no/grasrotandelen"
-				target="_blank"
-				rel="noopener noreferrer"
-				class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[var(--color-primary)] hover:underline"
-			>
-				Les mer om Grasrotandelen ↗
-			</a>
 		</div>
 	</div>
-
 </section>
