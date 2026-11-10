@@ -17,6 +17,8 @@ describe('osloToday', () => {
 		// 23:30 UTC is already the next day in Oslo (UTC+1 in winter)
 		expect(osloToday(new Date('2026-11-28T23:30:00Z'))).toBe('2026-11-29');
 		expect(osloToday(new Date('2026-11-29T12:00:00Z'))).toBe('2026-11-29');
+		// Sommertid (UTC+2): 22:30 UTC er allerede neste dag i Oslo
+		expect(osloToday(new Date('2026-06-14T22:30:00Z'))).toBe('2026-06-15');
 	});
 });
 

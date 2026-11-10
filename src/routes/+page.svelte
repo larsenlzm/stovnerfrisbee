@@ -62,7 +62,8 @@
 	<div data-event={live.title} class="border-b border-[var(--color-accent)]/25 bg-[var(--color-accent)]/10">
 		<div class="mx-auto flex max-w-6xl flex-col gap-1.5 px-4 py-3 text-[15px] sm:flex-row sm:items-center sm:justify-between sm:gap-6">
 			<p class="text-[var(--color-text)]">
-				<span class="mr-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-accent-dark)]">
+				<span class="mr-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[var(--color-text)]">
+					<!-- Oransje bare på prikken: oransje tekst på den lyse oransje flaten når ikke AA-kontrast -->
 					<span class="h-2 w-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
 					{current.when === 'today' ? 'Pågår nå' : 'I morgen'}
 				</span>
@@ -70,9 +71,9 @@
 				<span class="text-[var(--color-muted)]">Banen kan være stengt for andre spillere under arrangementet.</span>
 			</p>
 			{#if live.link.startsWith('http')}
-				<a href={live.link} target="_blank" rel="noopener noreferrer" data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info ↗</a>
+				<a href={live.link} target="_blank" rel="noopener noreferrer" data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info<span class="sr-only"> om {live.title} (åpnes i ny fane)</span> <span aria-hidden="true">↗</span></a>
 			{:else}
-				<a href={live.link} data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info →</a>
+				<a href={live.link} data-track="frontpage-live" class="shrink-0 text-sm font-semibold text-[var(--color-primary)] hover:underline">Mer info<span class="sr-only"> om {live.title}</span> <span aria-hidden="true">→</span></a>
 			{/if}
 		</div>
 	</div>

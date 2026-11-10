@@ -5,7 +5,8 @@ interface DatedEvent {
 	category: string;
 }
 
-// Dagens dato i Oslo som YYYY-MM-DD, så «i dag» ikke skifter ved UTC-midnatt
+// Dagens dato i Oslo som YYYY-MM-DD, så «i dag» ikke skifter ved UTC-midnatt.
+// sv-SE brukes fordi den lokalen formaterer datoer som YYYY-MM-DD.
 export function osloToday(now: Date = new Date()): string {
 	return new Intl.DateTimeFormat('sv-SE', { timeZone: 'Europe/Oslo' }).format(now);
 }
