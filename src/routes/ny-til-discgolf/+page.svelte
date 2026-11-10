@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import HoleIllustration from '$lib/components/HoleIllustration.svelte';
 
 	const steps = [
 		{ title: 'Utkastet (tee)', text: 'Hvert hull starter fra det oppmerkede utkastet. Den som brukte færrest kast på forrige hull, kaster først.' },
@@ -71,7 +72,15 @@
 
 		<div>
 			<h2 class="text-xl font-semibold text-[var(--color-text)]">Slik spiller du</h2>
-			{@render numbered(steps)}
+			<!-- Tegningen står over stegene på mobil og til høyre for dem fra md -->
+			<div class="mt-6 grid gap-8 md:grid-cols-[1fr_15rem] md:gap-10">
+				<div class="mx-auto w-full max-w-[15rem] md:order-2 md:mt-1">
+					<HoleIllustration />
+				</div>
+				<div class="md:order-1 [&>ol]:mt-0">
+					{@render numbered(steps)}
+				</div>
+			</div>
 		</div>
 
 		<div>

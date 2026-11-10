@@ -58,3 +58,4 @@ Disse reglene leses før enhver endring i UI, layout eller innhold, og gjelder a
 | 2026-11-05 | Ingen karusell til å begynne med, ett innrammet bilde. |
 | 2026-11-05 | Menyregelen handler om stil og luft, ikke et fast tak på fem valg. |
 | 2026-11-09 | Arrangementssider på egne subdomener (først nc.stovnerfrisbee.no) har eget uttrykk: vimpler, stor tittel, tekst over bildet, logo som arrangør. Gjelder bare disse sidene. |
+| 2026-11-10 | Hull-tegningen på «Ny til discgolf» bruker fargene fra hullskiltene på banen (gress-grønn, tre-grønn, gul, grå). Unntaket gjelder bare denne tegningen, og den beholder lyse farger i mørkt tema. |
