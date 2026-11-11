@@ -15,6 +15,7 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 - `?notrack` på en hvilken som helst adresse slår av sporing i denne nettleseren (lagres i localStorage som `sf-notrack`).
 - `?track` slår den på igjen.
 - Når sporing er slått av slik, vises en rød strek øverst på siden. Besøkende ser den aldri.
+- `?notrack` stopper også Vercel Analytics (`beforeSend` i `src/routes/+layout.ts`).
 - `?notrack` lagres per domene (localStorage), så den må settes separat på `nc.stovnerfrisbee.no`.
 
 ## Hendelser
