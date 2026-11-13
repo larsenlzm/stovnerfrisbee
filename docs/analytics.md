@@ -42,8 +42,8 @@ Nye eksterne lenker spores automatisk. Legg til `data-track` bare når samme len
 1. «Bli medlem»-klikk (`member_cta_click`) → `/bli-medlem` → utgående klikk til Spond.
 2. `/arrangementer` → `outbound_click`, fordelt på `destination` og `event_title`.
 
-## Rydding av data
+## Prosjekt
 
-- Prosjektet opprettet 2026-11-05 inneholder egne testklikk fra localhost og tidlige besøk. Anbefalt: nytt PostHog-prosjekt (EU), ny nøkkel i Vercel, og gammelt prosjekt slettes når det nye viser første hendelser.
-- Alternativ: behold prosjektet og filtrer alle innsikter på `$host = www.stovnerfrisbee.no`.
-- `data-event` og `data-track` er først live når `forside-redesign` er merget.
+- Nytt PostHog-prosjekt «Stovner frisbee no» (EU, id 348042) fra 2026-11-13, med cookieless tracking og tidssone Europe/Oslo. Det gamle prosjektet fra 2026-11-05, med testklikk fra localhost, er slettet.
+- Prosjektinnstillinger: autocapture av, heatmaps og web vitals på, session recordings av. Authorized URLs: `stovnerfrisbee.no`, `www.stovnerfrisbee.no` og `nc.stovnerfrisbee.no`.
+- De første hendelsene (2026-11-13 ca. kl. 09:48–09:52) er testbesøk på `/banene` og `/arrangementer`.
