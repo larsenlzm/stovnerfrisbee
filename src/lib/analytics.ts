@@ -38,8 +38,9 @@ export function initAnalytics() {
 		// Proxy i hooks.server.ts
 		api_host: '/sf-data',
 		ui_host: 'https://eu.posthog.com',
-		// Kun i minnet – ingen cookies eller localStorage, så vi trenger ikke samtykkebanner
-		persistence: 'memory',
+		// Ingen cookies eller localStorage, så vi trenger ikke samtykkebanner. PostHog kjenner igjen besøkende
+		// i løpet av en dag med en hash av IP og nettleser (krever cookieless tracking på i prosjektet).
+		cookieless_mode: 'always',
 		capture_pageview: 'history_change',
 		capture_pageleave: true,
 		disable_session_recording: true

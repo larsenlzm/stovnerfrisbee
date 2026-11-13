@@ -8,7 +8,7 @@ Bruksstatistikk med PostHog (EU, uten cookies). Mål: se hvor mange som går fra
 - Prosjektnøkkelen (`phc_...`) settes som `PUBLIC_POSTHOG_KEY` i Vercel (Production). Den er en offentlig nøkkel som uansett sendes til alle besøkende, så den er ikke hemmelig. Etter endring må det deployes på nytt.
 - Lokal `.env` trengs ikke: sporing er kun på for `stovnerfrisbee.no`, `www.stovnerfrisbee.no` og `nc.stovnerfrisbee.no` (Norges Cup-siden), så lokal utvikling og forhåndsvisninger telles aldri.
 - Data går via en proxy på `/sf-data` (`src/hooks.server.ts`) for å komme rundt annonseblokkere.
-- `persistence: 'memory'`: ingen cookies eller localStorage, så vi trenger ikke samtykkebanner. Det gir ingen personprofiler, så anonyme hendelser kan ikke slettes enkeltvis via persons-API-et.
+- `cookieless_mode: 'always'`: ingen cookies eller localStorage, så vi trenger ikke samtykkebanner. PostHog kjenner igjen en besøkende i løpet av samme døgn med en hash av IP og nettleser, men ikke fra dag til dag. Krever **Enable cookieless tracking** under Settings → Project → Web analytics, ellers forkastes hendelsene. Proxyen sender `x-forwarded-for` videre, så hashen får riktig IP. Det gir ingen personprofiler, så anonyme hendelser kan ikke slettes enkeltvis via persons-API-et.
 
 ## Slå av sporing i egen nettleser
 
