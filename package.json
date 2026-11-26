@@ -3,8 +3,13 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.6"
+  },
   "scripts": {
     "dev": "vite dev",
+    "sheet:pull": "node --experimental-strip-types scripts/fetch-sheet.ts",
+    "prebuild": "npm run sheet:pull",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
