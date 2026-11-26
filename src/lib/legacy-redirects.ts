@@ -14,9 +14,11 @@ const PAGE_IDS: Record<string, string> = {
 	'1555': '/om-klubben' // 40 år
 };
 
-// Gamle filer som har fått en egen side
-const FILES: Record<string, string> = {
-	'/wp-content/uploads/2017/04/Stovner-Frisbeeklubb-Turneringsstøtte.pdf': '/reisestotte'
+// Gamle stier og filer som har fått ny adresse (nøkkelen er stien etter dekoding)
+const PATHS: Record<string, string> = {
+	'/reisestotte': '/for-medlemmer#reisestotte',
+	'/reisestotte/': '/for-medlemmer#reisestotte',
+	'/wp-content/uploads/2017/04/Stovner-Frisbeeklubb-Turneringsstøtte.pdf': '/for-medlemmer#reisestotte'
 };
 
 export function legacyRedirect(url: URL): string | null {
@@ -26,7 +28,7 @@ export function legacyRedirect(url: URL): string | null {
 	} catch {
 		// Ugyldig prosent-koding: behold stien som den er
 	}
-	if (FILES[path]) return FILES[path];
+	if (PATHS[path]) return PATHS[path];
 	if (url.pathname !== '/' && url.pathname !== '/index.php') return null;
 	const id = url.searchParams.get('page_id');
 	return (id && PAGE_IDS[id]) || null;

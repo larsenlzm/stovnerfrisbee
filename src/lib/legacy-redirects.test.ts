@@ -15,10 +15,12 @@ describe('legacy WordPress redirects', () => {
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/index.php?page_id=19'))).toBe('/banene');
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/?page_id=1302&fbclid=abc'))).toBe('/arrangementer');
 	});
-	it('sends old PDF links to their new page', () => {
+	it('sends reisestøtte addresses to the member page', () => {
+		expect(legacyRedirect(u('https://stovnerfrisbee.no/reisestotte'))).toBe('/for-medlemmer#reisestotte');
+		expect(legacyRedirect(u('https://stovnerfrisbee.no/reisestotte/'))).toBe('/for-medlemmer#reisestotte');
 		expect(
 			legacyRedirect(u('http://www.stovnerfrisbee.no/wp-content/uploads/2017/04/Stovner-Frisbeeklubb-Turneringsst%C3%B8tte.pdf'))
-		).toBe('/reisestotte');
+		).toBe('/for-medlemmer#reisestotte');
 	});
 	it('leaves everything else alone', () => {
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/'))).toBeNull();
