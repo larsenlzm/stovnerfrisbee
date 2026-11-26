@@ -210,6 +210,16 @@ describe('parseBoard', () => {
 			expect(warnings).toEqual([`${BOARD_TAB} rad 2 (Ola): Ugyldig ID`]);
 		}
 	);
+	it('keeps a plain integer ID cell as a string', () => {
+		const { items, warnings } = parseBoard([h, row({ ID: 12345678 })]);
+		expect(warnings).toEqual([]);
+		expect(items[0].id).toBe('12345678');
+	});
+	it('skips an exponent-shaped numeric ID cell', () => {
+		const { items, warnings } = parseBoard([h, row({ ID: 1.2345e71 })]);
+		expect(items).toEqual([]);
+		expect(warnings).toEqual([`${BOARD_TAB} rad 2 (Ola): Ugyldig ID`]);
+	});
 	it('skips a row whose ID was used by an earlier valid row', () => {
 		const { items, warnings } = parseBoard([h, row(), row({ Navn: 'B', Rekkefølge: 2 })]);
 		expect(items.map((i) => i.name)).toEqual(['Ola']);

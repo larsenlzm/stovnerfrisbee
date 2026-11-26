@@ -51,7 +51,7 @@ function setup() {
     removeOwnProtections_(pub);
 
     var cols = getColumns_(work);
-    [['ID', cols.id], ['Godkjent', cols.godkjent], ['Publisering', cols.publisering], ['Hash', cols.hash]]
+    [['ID', cols.id], ['Status', cols.status], ['Godkjent', cols.godkjent], ['Publisering', cols.publisering], ['Hash', cols.hash]]
       .forEach(function (pair) {
         var letter = columnLetter_(pair[1]);
         var protection = work.getRange(letter + ':' + letter).protect()
@@ -68,9 +68,29 @@ function setup() {
     restrictEditors_(sheetProtection, editors);
 
     work.hideColumns(cols.hash);
+
+    // Tekstformat, ellers lagrer Sheets ID-er som «12345678» eller «1e5» som tall, og tekster som
+    // «30.05» eller «=x» tolkes som dato eller formel når raden kopieres til Publisert.
+    setTextFormat_(work, ['ID']);
+    var pubTextCols = readHeaders_(pub).filter(function (name) {
+      return name && PUBLISHED_NON_TEXT.indexOf(name) === -1;
+    });
+    setTextFormat_(pub, pubTextCols);
   });
 
   hourlyCheck();
+}
+
+var PUBLISHED_NON_TEXT = ['Startdato', 'Sluttdato', 'Rekkefølge', 'Publisert tidspunkt'];
+
+/** Setter tekstformat (@) på de navngitte kolonnene, fra rad 2 og ned. */
+function setTextFormat_(sheet, names) {
+  var headers = readHeaders_(sheet);
+  var rows = Math.max(sheet.getMaxRows() - 1, 1);
+  names.forEach(function (name) {
+    var col = headers.indexOf(name) + 1;
+    if (col) sheet.getRange(2, col, rows, 1).setNumberFormat('@');
+  });
 }
 
 function protectionEditors_(ss) {
@@ -142,8 +162,9 @@ function onEditInstalled(e) {
     if (!hasContent && !cellString_(values, cols.hash)) continue;
 
     if (hasContent && !cellString_(values, cols.id)) {
-      var newId = Utilities.getUuid().slice(0, 8);
-      sheet.getRange(row, cols.id).setValue(newId);
+      // Starter med bokstav, så Sheets aldri leser ID-en som et tall (f.eks. 12345e67).
+      var newId = 'r' + Utilities.getUuid().replace(/-/g, '').slice(0, 7);
+      sheet.getRange(row, cols.id).setNumberFormat('@').setValue(newId);
       values[cols.id - 1] = newId;
     }
 

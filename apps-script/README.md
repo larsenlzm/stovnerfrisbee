@@ -19,8 +19,8 @@ Kjør i arket etter `setup()`. Bruk en testrad, og rydd opp etterpå.
 
 | # | Oppførsel | Sjekk |
 |---|---|---|
-| 0 | `setup()` | Triggerne `onEditInstalled` og `hourlyCheck` finnes (Apps Script → Triggere). ID, Godkjent, Publisering og Hash i begge arbeidsfaner og begge Publisert-faner er beskyttet med kun godkjennere + eier, og det samme gjelder overskriftsraden (rad 1) i begge arbeidsfaner. Hash-kolonnen er skjult. |
-| 1 | Rad med innhold men uten ID | Skriv en tittel i en ny rad i `Arrangementer` → ID fylles med 8 tegn. Samme i `Styret` med navn. |
+| 0 | `setup()` | Triggerne `onEditInstalled` og `hourlyCheck` finnes (Apps Script → Triggere). ID, Status, Godkjent, Publisering og Hash i begge arbeidsfaner og begge Publisert-faner er beskyttet med kun godkjennere + eier, og det samme gjelder overskriftsraden (rad 1) i begge arbeidsfaner. Hash-kolonnen er skjult. ID-kolonnen i alle fire faner og tekstkolonnene i Publisert-fanene har tekstformat. |
+| 1 | Rad med innhold men uten ID | Skriv en tittel i en ny rad i `Arrangementer` → ID fylles med 8 tegn (starter alltid med bokstaven `r`, lagres som tekst). Samme i `Styret` med navn. |
 | 2 | Godkjent, Status ≠ `✅` | Kryss av Godkjent på en ufullstendig rad → krysset fjernes, toast «Kan ikke godkjennes: Mangler …». Publisert-fanen er uendret. |
 | 3 | Godkjent, Status = `✅`, Fjern ikke krysset | Kryss av Godkjent på en gyldig rad → raden finnes i Publisert-fanen (kolonnene i riktig rekkefølge, `Publisert av` = e-post eller `ukjent`, `Publisert tidspunkt` = nå), Publisering = `Publisert dd.mm.yyyy HH:mm`, Hash er fylt, nettsiden bygges (eller toast om manglende/feilende deploy-hook). Godkjenn samme rad på nytt etter en endring → raden oppdateres, ikke dupliseres. |
 | 4 | Godkjent, Fjern krysset | Kryss av Fjern (→ «Endret – venter på godkjenning»), så Godkjent → raden er slettet fra Publisert-fanen, Publisering = `Fjernet fra nettsiden dd.mm.yyyy`, deploy-hook kalt. |
