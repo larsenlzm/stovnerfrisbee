@@ -32,6 +32,10 @@ describe('decideSource', () => {
 		expect(decideSource(env)).toBe('sheet');
 		expect(decideSource({ ...env, VERCEL: '1' })).toBe('sheet');
 	});
+	it('errors locally when only one credential is set', () => {
+		expect(decideSource({ CONTENT_SHEET_ID: 'id' })).toHaveProperty('error');
+		expect(decideSource({ GOOGLE_SERVICE_ACCOUNT_JSON: '{}' })).toHaveProperty('error');
+	});
 	it('errors on Vercel when only one is set', () => {
 		expect(decideSource({ VERCEL: '1', CONTENT_SHEET_ID: 'id' })).toHaveProperty('error');
 		expect(decideSource({ VERCEL: '1', GOOGLE_SERVICE_ACCOUNT_JSON: '{}' })).toHaveProperty('error');

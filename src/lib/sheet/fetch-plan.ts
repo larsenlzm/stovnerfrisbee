@@ -10,6 +10,12 @@ export function decideSource(
 				'GOOGLE_SERVICE_ACCOUNT_JSON og CONTENT_SHEET_ID må være satt på Vercel. Bygget stoppes så forrige deploy beholdes.'
 		};
 	}
+	if (env.GOOGLE_SERVICE_ACCOUNT_JSON || env.CONTENT_SHEET_ID) {
+		return {
+			error:
+				'Bare én av GOOGLE_SERVICE_ACCOUNT_JSON og CONTENT_SHEET_ID er satt. Sett begge, eller ingen for å bruke den innsjekkede kopien.'
+		};
+	}
 	return 'snapshot';
 }
 

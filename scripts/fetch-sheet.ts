@@ -49,10 +49,14 @@ async function main() {
 		const fileId = driveFileId(row.imageUrl);
 		if (!fileId) throw new Error(`Ugyldig bildelenke for styremedlem ${row.id}`);
 		const original = await downloadDriveFile(token, fileId);
-		const jpg = await sharp(original)
-			.resize(400, 400, { fit: 'cover' })
-			.jpeg({ quality: 82 })
-			.toBuffer();
+		let jpg: Buffer;
+		try {
+			jpg = await sharp(original).resize(400, 400, { fit: 'cover' }).jpeg({ quality: 82 }).toBuffer();
+		} catch (err) {
+			throw new Error(
+				`Kunne ikke behandle bildet til styremedlem ${row.name} (${row.id}): ${err instanceof Error ? err.message : err}`
+			);
+		}
 		await writeFile(new URL(`${row.id}.jpg`, imageDir), jpg);
 		keep.add(`${row.id}.jpg`);
 		members.push({ name: row.name, role: row.role, email: row.email, image: boardImagePath(row.id) });

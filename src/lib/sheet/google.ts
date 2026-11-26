@@ -29,7 +29,18 @@ export async function getAccessToken(
 			assertion: `${header}.${claims}.${signature}`
 		})
 	});
-	if (!res.ok) throw new Error(`Kunne ikke hente tilgangstoken fra Google (status ${res.status})`);
+	if (!res.ok) {
+		let detail = '';
+		try {
+			const err = (await res.json()) as { error?: string; error_description?: string };
+			detail = [err.error, err.error_description].filter(Boolean).join(': ');
+		} catch {
+			// ingen lesbar feilbeskrivelse
+		}
+		throw new Error(
+			`Kunne ikke hente tilgangstoken fra Google (status ${res.status})${detail ? `: ${detail}` : ''}`
+		);
+	}
 	const json = (await res.json()) as { access_token?: string };
 	if (!json.access_token) throw new Error('Google ga ikke noe tilgangstoken');
 	return json.access_token;
