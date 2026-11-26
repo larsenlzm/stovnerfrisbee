@@ -59,6 +59,11 @@ function setup() {
         restrictEditors_(protection, editors);
       });
 
+    // Overskriftsraden: en omdøpt kolonne ville ellers gjøre at feltet ikke kan publiseres.
+    var headerProtection = work.getRange('1:1').protect()
+      .setDescription(PROTECTION_PREFIX + workName + ' / overskrifter');
+    restrictEditors_(headerProtection, editors);
+
     var sheetProtection = pub.protect().setDescription(PROTECTION_PREFIX + pubName);
     restrictEditors_(sheetProtection, editors);
 
@@ -108,7 +113,15 @@ function onEditInstalled(e) {
   var lastRow = range.getLastRow();
   if (lastRow < firstRow) return;
 
-  var cols = getColumns_(sheet);
+  var ss = SpreadsheetApp.getActive();
+  var cols;
+  try {
+    cols = getColumns_(sheet);
+  } catch (err) {
+    // Godkjent kan ikke fjernes uten kolonnene; hourlyCheck rydder opp når arket er rettet.
+    ss.toast('Publisering feilet: ' + err.message, tabName, 15);
+    return;
+  }
   var editedFrom = range.getColumn();
   var editedTo = range.getLastColumn();
   var touches = function (col) { return col >= editedFrom && col <= editedTo; };
@@ -119,8 +132,8 @@ function onEditInstalled(e) {
   if (!godkjentEdited && !contentEdited) return;
 
   SpreadsheetApp.flush(); // sørg for at Status-formelen er regnet ut på nytt
-  var ss = SpreadsheetApp.getActive();
-  var deployNeeded = false;
+  // Settes til true så snart en Publisert-fane faktisk er endret, også om noe feiler etterpå.
+  var state = { deployNeeded: false };
 
   for (var row = firstRow; row <= lastRow; row++) {
     var values = readRow_(sheet, row);
@@ -137,17 +150,40 @@ function onEditInstalled(e) {
     // Bare en avkrysning (TRUE) i Godkjent er en godkjenning. Et manuelt fjernet kryss
     // gjør ingenting med versjonen på nettsiden.
     if (godkjentEdited && values[cols.godkjent - 1] === true) {
-      if (approveRow_(ss, sheet, row, values, cols)) deployNeeded = true;
+      try {
+        approveRow_(ss, sheet, row, values, cols, state);
+      } catch (err) {
+        approvalFailed_(ss, sheet, row, cols, err);
+      }
     } else if (contentEdited) {
-      contentChanged_(ss, sheet, row, values, cols);
+      try {
+        contentChanged_(ss, sheet, row, values, cols);
+      } catch (err) {
+        ss.toast('Feil ved behandling av rad ' + row + ': ' + err.message, tabName, 15);
+      }
     }
   }
 
-  if (deployNeeded) callDeployHook_(ss);
+  if (state.deployNeeded) callDeployHook_(ss);
 }
 
-/** Returnerer true hvis Publisert-fanen ble endret. */
-function approveRow_(ss, sheet, row, values, cols) {
+/**
+ * En godkjenning som feiler skal ikke se vellykket ut: fjern krysset slik at raden
+ * ikke senere tas for å være godkjent (se hourlyCheck), og forklar hvorfor.
+ */
+function approvalFailed_(ss, sheet, row, cols, err) {
+  var reason = err && err.message ? err.message : String(err);
+  try {
+    sheet.getRange(row, cols.godkjent).setValue(false);
+    sheet.getRange(row, cols.publisering).setValue('Publisering feilet: ' + reason);
+  } catch (ignored) {
+    // Kan ikke skrive til arket; toasten under er alt vi kan gjøre.
+  }
+  ss.toast('Publisering feilet: ' + reason, sheet.getName() + ', rad ' + row, 15);
+}
+
+/** Setter state.deployNeeded = true når Publisert-fanen er endret. Kaster ved feil. */
+function approveRow_(ss, sheet, row, values, cols, state) {
   var tabName = sheet.getName();
   var id = cellString_(values, cols.id);
   var removing = values[cols.fjern - 1] === true;
@@ -158,7 +194,7 @@ function approveRow_(ss, sheet, row, values, cols) {
     if (status !== OK_STATUS) {
       sheet.getRange(row, cols.godkjent).setValue(false);
       ss.toast('Kan ikke godkjennes: ' + (status || 'Status mangler'), tabName + ', rad ' + row, 10);
-      return false;
+      return;
     }
   }
 
@@ -173,6 +209,7 @@ function approveRow_(ss, sheet, row, values, cols) {
       upsertPublished_(pub, id, values, cols, now);
     }
   });
+  state.deployNeeded = true;
 
   var publisering = removing
     ? 'Fjernet fra nettsiden ' + Utilities.formatDate(now, tz, 'dd.MM.yyyy')
@@ -180,7 +217,6 @@ function approveRow_(ss, sheet, row, values, cols) {
   sheet.getRange(row, cols.hash).setValue(computeHash_(values, cols));
   sheet.getRange(row, cols.publisering).setValue(publisering);
   ss.toast(publisering + ': ' + rowLabel_(values, cols), tabName, 5);
-  return true;
 }
 
 function contentChanged_(ss, sheet, row, values, cols) {
@@ -212,11 +248,19 @@ function upsertPublished_(pub, id, values, cols, now) {
   var email = '';
   try { email = Session.getActiveUser().getEmail(); } catch (err) { email = ''; }
 
+  // Alle Publisert-kolonner må finnes i arbeidsfanen; ellers ville feltet publiseres tomt.
+  var missing = pubHeaders.filter(function (name) {
+    return name && name !== 'Publisert av' && name !== 'Publisert tidspunkt' && !cols.byName[name];
+  });
+  if (missing.length) {
+    throw new Error('kolonnen ' + missing.map(function (n) { return '«' + n + '»'; }).join(', ') +
+      ' mangler i arbeidsfanen');
+  }
+
   var out = pubHeaders.map(function (name) {
     if (name === 'Publisert av') return email || 'ukjent';
     if (name === 'Publisert tidspunkt') return now;
-    var col = cols.byName[name];
-    return col ? values[col - 1] : '';
+    return name ? values[cols.byName[name] - 1] : '';
   });
 
   var targetRow = findPublishedRow_(pub, idCol, id);
@@ -246,9 +290,23 @@ function findPublishedRow_(pub, idCol, id) {
   return 0;
 }
 
+/** Sett med ID-ene i en Publisert-fane. */
+function readPublishedIds_(pub) {
+  var idCol = readHeaders_(pub).indexOf('ID') + 1;
+  if (!idCol) throw new Error('Fant ikke kolonnen «ID» i ' + pub.getName());
+  var ids = {};
+  var last = pub.getLastRow();
+  if (last < 2) return ids;
+  pub.getRange(2, idCol, last - 1, 1).getValues().forEach(function (r) {
+    var id = String(r[0]).trim();
+    if (id) ids[id] = true;
+  });
+  return ids;
+}
+
 function withLock_(fn) {
   var lock = LockService.getScriptLock();
-  lock.waitLock(LOCK_TIMEOUT_MS);
+  if (!lock.tryLock(LOCK_TIMEOUT_MS)) throw new Error('arket var opptatt, prøv igjen');
   try {
     fn();
     SpreadsheetApp.flush();
@@ -263,23 +321,45 @@ function withLock_(fn) {
 
 function hourlyCheck() {
   var ss = SpreadsheetApp.getActive();
+  var errors = [];
   Object.keys(CONFIG.tabs).forEach(function (tabName) {
-    var sheet = getSheetOrThrow_(ss, tabName);
-    var last = sheet.getLastRow();
-    if (last < 2) return;
-    var cols = getColumns_(sheet);
-    var data = sheet.getRange(2, 1, last - 1, sheet.getLastColumn()).getValues();
-    data.forEach(function (values, i) {
-      if (values[cols.godkjent - 1] !== true) return;
-      var row = i + 2;
-      var hash = computeHash_(values, cols);
-      var stored = cellString_(values, cols.hash);
-      if (!stored) {
-        sheet.getRange(row, cols.hash).setValue(hash); // migrert rad uten hash
-      } else if (stored !== hash) {
-        markChanged_(ss, sheet, row, values, cols);
+    try {
+      hourlyCheckTab_(ss, tabName);
+    } catch (err) {
+      errors.push(tabName + ': ' + err.message);
+    }
+  });
+  if (errors.length) throw new Error('hourlyCheck feilet: ' + errors.join('; '));
+}
+
+function hourlyCheckTab_(ss, tabName) {
+  var sheet = getSheetOrThrow_(ss, tabName);
+  var last = sheet.getLastRow();
+  if (last < 2) return;
+  var cols = getColumns_(sheet);
+  var publishedIds = readPublishedIds_(getSheetOrThrow_(ss, CONFIG.tabs[tabName]));
+  var data = sheet.getRange(2, 1, last - 1, sheet.getLastColumn()).getValues();
+  data.forEach(function (values, i) {
+    if (values[cols.godkjent - 1] !== true) return;
+    var row = i + 2;
+    var hash = computeHash_(values, cols);
+    var stored = cellString_(values, cols.hash);
+    if (!stored) {
+      // Avkrysset uten hash: enten en migrert rad (står i Publisert-fanen, eller er fjernet
+      // med Fjern), eller en godkjenning som feilet underveis. Bare det første godtas.
+      var id = cellString_(values, cols.id);
+      var removed = values[cols.fjern - 1] === true;
+      var consistent = removed ? !publishedIds[id] : (id && publishedIds[id]);
+      if (consistent) {
+        sheet.getRange(row, cols.hash).setValue(hash);
+      } else {
+        sheet.getRange(row, cols.godkjent).setValue(false);
+        sheet.getRange(row, cols.publisering).setValue('Venter på godkjenning');
+        notifyApprovers_(ss, sheet, row, values, cols);
       }
-    });
+    } else if (stored !== hash) {
+      markChanged_(ss, sheet, row, values, cols);
+    }
   });
 }
 

@@ -19,7 +19,7 @@ Kjør i arket etter `setup()`. Bruk en testrad, og rydd opp etterpå.
 
 | # | Oppførsel | Sjekk |
 |---|---|---|
-| 0 | `setup()` | Triggerne `onEditInstalled` og `hourlyCheck` finnes (Apps Script → Triggere). ID, Godkjent, Publisering og Hash i begge arbeidsfaner og begge Publisert-faner er beskyttet med kun godkjennere + eier. Hash-kolonnen er skjult. |
+| 0 | `setup()` | Triggerne `onEditInstalled` og `hourlyCheck` finnes (Apps Script → Triggere). ID, Godkjent, Publisering og Hash i begge arbeidsfaner og begge Publisert-faner er beskyttet med kun godkjennere + eier, og det samme gjelder overskriftsraden (rad 1) i begge arbeidsfaner. Hash-kolonnen er skjult. |
 | 1 | Rad med innhold men uten ID | Skriv en tittel i en ny rad i `Arrangementer` → ID fylles med 8 tegn. Samme i `Styret` med navn. |
 | 2 | Godkjent, Status ≠ `✅` | Kryss av Godkjent på en ufullstendig rad → krysset fjernes, toast «Kan ikke godkjennes: Mangler …». Publisert-fanen er uendret. |
 | 3 | Godkjent, Status = `✅`, Fjern ikke krysset | Kryss av Godkjent på en gyldig rad → raden finnes i Publisert-fanen (kolonnene i riktig rekkefølge, `Publisert av` = e-post eller `ukjent`, `Publisert tidspunkt` = nå), Publisering = `Publisert dd.mm.yyyy HH:mm`, Hash er fylt, nettsiden bygges (eller toast om manglende/feilende deploy-hook). Godkjenn samme rad på nytt etter en endring → raden oppdateres, ikke dupliseres. |
@@ -28,5 +28,6 @@ Kjør i arket etter `setup()`. Bruk en testrad, og rydd opp etterpå.
 | 6 | Innhold endret, aldri publisert | Fyll ut en ny rad → Publisering = `Venter på godkjenning`, godkjennerne får én e-post (ikke én per celle). |
 | 7 | Flerradsliming | Lim inn to rader innhold samtidig → begge får ID og «Venter på godkjenning». Lim inn avkrysset Godkjent i to gyldige rader → begge publiseres, deploy-hook kalles én gang. |
 | 8 | Godkjenner fjerner kryss manuelt | Fjern krysset i Godkjent på en publisert rad → ingenting skjer; raden står fortsatt i Publisert-fanen. |
-| 9 | `hourlyCheck` | Tøm Hash-cellen på en godkjent rad og kjør `hourlyCheck` → hash lagres, Godkjent står. Endre Hash-cellen til noe annet og kjør igjen → som rad 5. |
+| 9 | `hourlyCheck` | Tøm Hash-cellen på en godkjent rad som står i Publisert-fanen og kjør `hourlyCheck` → hash lagres, Godkjent står. Endre Hash-cellen til noe annet og kjør igjen → som rad 5. Simuler en godkjenning som feilet: slett en godkjent rad fra Publisert-fanen for hånd, tøm Hash-cellen (vis kolonnen midlertidig) og kjør `hourlyCheck` → Godkjent fjernes, Publisering = `Venter på godkjenning`. |
 | 10 | Redaktør uten godkjennerrettighet | Som redaktør: forsøk å krysse av Godkjent eller redigere en Publisert-fane → blokkert av beskyttelsen. |
+| 11 | Publisering feiler | Gi en kolonne i Publisert-fanen et navn som ikke finnes i arbeidsfanen (f.eks. `Beskrivelse` → `Beskrivelse2`), og kryss av Godkjent på en gyldig rad → krysset fjernes, Publisering = `Publisering feilet: kolonnen «Beskrivelse2» mangler i arbeidsfanen`, toast, ingen rad i Publisert-fanen. Rett navnet tilbake etterpå. |
