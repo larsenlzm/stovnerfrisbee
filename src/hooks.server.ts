@@ -1,5 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
 import { eventHostRedirect } from '$lib/events/hosts';
+import { legacyRedirect } from '$lib/legacy-redirects';
 
 // Videresender PostHog-trafikk via eget domene, så adblockere ikke stopper den
 const PROXY_PATH = '/sf-data';
@@ -8,6 +9,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Arrangementsdomenet viser bare Norges Cup-siden; alt annet går til hovedsiden
 	const target = eventHostRedirect(event.url);
 	if (target) return new Response(null, { status: 308, headers: { location: target } });
+
+	// Gamle WordPress-adresser fra bokmerker
+	const legacy = legacyRedirect(event.url);
+	if (legacy) return new Response(null, { status: 301, headers: { location: legacy } });
 
 	const { pathname, search } = event.url;
 	if (!pathname.startsWith(`${PROXY_PATH}/`)) return resolve(event);

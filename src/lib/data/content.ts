@@ -16,6 +16,10 @@ export const courses = [
 		tees: 'Kunstgress',
 		amenities: { dogs: true, cart: true, stroller: true, restrooms: false, water: false },
 		udiscLink: 'https://udisc.com/courses/stovner-discgolfpark-iohl',
+		beginners: [
+			'Kort layout med ni av de korteste hullene, laget for nybegynnere.',
+			'Treningsområde med driving range ved klubbhuset (containerne).'
+		],
 		directions: [
 			'T-bane linje 5 til Rommen, ca. 6 minutter å gå til banen.',
 			'Med bil: parker ved Rommen skole og kultursenter, Karen Platous vei 31. Sjekk skiltingen og følg parkeringsreglene der.'

@@ -67,7 +67,7 @@
 			<div>
 				<h2 class="mb-2 text-xl font-semibold text-[var(--color-text)]">Hvor kan du spille?</h2>
 				<p class="leading-relaxed text-[var(--color-muted)]">
-					Stovner Discgolfpark er en 18-hulls bane i Stovnerlia. En runde tar omtrent to timer, og banen er vurdert som vanskelig.
+					Stovner Discgolfpark er en 18-hulls bane i Stovnerlia. En runde tar omtrent to timer, og banen er vurdert som vanskelig. Er du ny, finnes det en kort layout med ni av de korteste hullene.
 					Banene våre er åpne og gratis for alle. Du kan ha med hund, vogn og barnevogn, men det er ikke toalett eller vann på banen.
 				</p>
 				<a href="/banene" class="mt-3 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">Se banene →</a>

@@ -127,6 +127,15 @@
 					{/each}
 				</div>
 
+				{#if 'beginners' in course}
+					<div class="mb-6">
+						<p class="text-sm font-semibold text-[var(--color-text)]">For nybegynnere og trening</p>
+						{#each course.beginners as line}
+							<p class="mt-1 text-sm leading-relaxed text-[var(--color-muted)]">{line}</p>
+						{/each}
+					</div>
+				{/if}
+
 				<!-- Veibeskrivelse -->
 				<div class="mb-6">
 					<p class="text-sm font-semibold text-[var(--color-text)]">Slik kommer du deg hit</p>
