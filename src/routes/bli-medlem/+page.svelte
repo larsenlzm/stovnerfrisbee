@@ -76,7 +76,7 @@
 					{ title: 'Delta i turneringer', desc: 'Vi arrangerer ligaspill, turnerninger og lavterskel arrangementer.' },
 					{ title: 'Støtt banene', desc: 'Medlemskontingenten går direkte til vedlikehold og utvikling av banene våre.' },
 					{ title: 'Fellesskap', desc: 'Bli en del av oss — et godt miljø med discgolfentusiaster i Groruddalen.' },
-					{ title: 'Reisestøtte til turneringer', desc: 'Skal du spille din første norgescup, NM eller turnering i utlandet, kan du søke styret om støtte. Klubben har også støtte for deg som ellers ikke har råd til å reise.' },
+					{ title: 'Reisestøtte til turneringer', desc: 'Skal du spille din første norgescup, NM eller turnering i utlandet, kan du søke styret om støtte. Klubben har også støtte for deg som ellers ikke har råd til å reise.', href: '/reisestotte', linkText: 'Les mer om reisestøtte' },
 					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },
 					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' },
 					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },
@@ -91,6 +91,9 @@
 						<div>
 							<p class="font-semibold text-[var(--color-text)]">{benefit.title}</p>
 							<p class="mt-0.5 text-sm leading-relaxed text-[var(--color-muted)]">{benefit.desc}</p>
+							{#if 'href' in benefit}
+								<a href={benefit.href} class="mt-1 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">{benefit.linkText} →</a>
+							{/if}
 						</div>
 					</li>
 				{/each}

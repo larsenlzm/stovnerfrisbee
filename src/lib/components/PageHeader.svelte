@@ -3,8 +3,8 @@
 		eyebrow: string;
 		title: string;
 		subtitle?: string;
-		image: string;
-		alt: string;
+		image?: string;
+		alt?: string;
 		position?: string;
 		backHref?: string;
 		backLabel?: string;
@@ -23,9 +23,11 @@
 		</a>
 	{/if}
 
-	<div class="aspect-[16/9] overflow-hidden rounded-2xl bg-[var(--color-surface-2)] md:aspect-[5/2]">
-		<img src={image} {alt} class="h-full w-full object-cover {position}" fetchpriority="high" />
-	</div>
+	{#if image}
+		<div class="aspect-[16/9] overflow-hidden rounded-2xl bg-[var(--color-surface-2)] md:aspect-[5/2]">
+			<img src={image} alt={alt ?? ''} class="h-full w-full object-cover {position}" fetchpriority="high" />
+		</div>
+	{/if}
 
 	<div class="max-w-2xl pt-7 md:pt-10">
 		<p class="text-[11.5px] font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)]">{eyebrow}</p>
