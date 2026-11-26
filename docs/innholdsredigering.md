@@ -16,7 +16,7 @@ Arrangementer og styret på nettsiden hentes fra Google-regnearket **Stovner Fri
 
 1. Gå til fanen **Arrangementer** og skriv i første tomme rad. ID fylles ut av seg selv.
 2. Fyll ut kolonnene under. Se på **Status**: står det `✅`, er raden klar.
-3. Si fra til en godkjenner. De får også en e-post automatisk (høyst én per rad hvert halvtime).
+3. Si fra til en godkjenner. De får også en e-post automatisk (høyst én per rad hvert 30. minutt).
 
 | Kolonne | Påkrevd? | Slik fyller du ut |
 |---|---|---|
