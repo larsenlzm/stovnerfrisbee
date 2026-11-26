@@ -10,6 +10,7 @@
 
 <!-- Benefits + How to join -->
 <section class="mx-auto max-w-6xl px-4 py-16">
+	<a href="/for-medlemmer" class="mb-10 inline-block text-sm font-medium text-[var(--color-primary)] hover:underline">Allerede medlem? Se hva klubben tilbyr →</a>
 	<div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
 		<!-- How to join (first on mobile, right on desktop) -->
 		<div class="order-first lg:order-last">
@@ -76,7 +77,7 @@
 					{ title: 'Delta i turneringer', desc: 'Vi arrangerer ligaspill, turnerninger og lavterskel arrangementer.' },
 					{ title: 'Støtt banene', desc: 'Medlemskontingenten går direkte til vedlikehold og utvikling av banene våre.' },
 					{ title: 'Fellesskap', desc: 'Bli en del av oss — et godt miljø med discgolfentusiaster i Groruddalen.' },
-					{ title: 'Reisestøtte til turneringer', desc: 'Skal du spille din første norgescup, NM eller turnering i utlandet, kan du søke styret om støtte. Klubben har også støtte for deg som ellers ikke har råd til å reise.', href: '/reisestotte', linkText: 'Les mer om reisestøtte' },
+					{ title: 'Reisestøtte til turneringer', desc: 'Skal du spille din første norgescup, NM eller turnering i utlandet, kan du søke styret om støtte. Klubben har også støtte for deg som ellers ikke har råd til å reise.', href: '/for-medlemmer#reisestotte', linkText: 'Les mer om reisestøtte' },
 					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },
 					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' },
 					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },

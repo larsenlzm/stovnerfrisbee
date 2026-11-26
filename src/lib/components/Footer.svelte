@@ -31,12 +31,15 @@
 
 		<div class="mt-7 flex flex-col justify-between gap-2 border-t border-[var(--color-border)] pt-5 text-xs text-[var(--color-muted)] sm:flex-row">
 			<p>© {new Date().getFullYear()} Stovner Frisbeeklubb</p>
-			<a
-				href="mailto:kontakt@stovnerfrisbee.no"
-				class="transition-colors hover:text-[var(--color-primary)]"
-			>
-				kontakt@stovnerfrisbee.no
-			</a>
+			<div class="flex flex-wrap gap-x-5 gap-y-2">
+				<a href="/for-medlemmer" class="transition-colors hover:text-[var(--color-primary)]">For medlemmer</a>
+				<a
+					href="mailto:kontakt@stovnerfrisbee.no"
+					class="transition-colors hover:text-[var(--color-primary)]"
+				>
+					kontakt@stovnerfrisbee.no
+				</a>
+			</div>
 		</div>
 	</div>
 </footer>

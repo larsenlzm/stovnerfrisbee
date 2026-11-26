@@ -97,7 +97,7 @@
 </section>
 
 <!-- Styret er et fullbredde bånd som går helt ned til footeren, så layoutens luft (pb-24) nulles ut -->
-<section class="-mb-24 bg-[var(--color-surface-2)]">
+<section id="styret" class="-mb-24 scroll-mt-[68px] bg-[var(--color-surface-2)]">
 	<div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
 		<h2 class="text-xl font-bold text-[var(--color-text)]">Styret</h2>
 
