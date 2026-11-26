@@ -28,8 +28,8 @@ export function legacyRedirect(url: URL): string | null {
 	} catch {
 		// Ugyldig prosent-koding: behold stien som den er
 	}
-	if (PATHS[path]) return PATHS[path];
+	if (Object.hasOwn(PATHS, path)) return PATHS[path];
 	if (url.pathname !== '/' && url.pathname !== '/index.php') return null;
 	const id = url.searchParams.get('page_id');
-	return (id && PAGE_IDS[id]) || null;
+	return id && Object.hasOwn(PAGE_IDS, id) ? PAGE_IDS[id] : null;
 }

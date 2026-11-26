@@ -26,6 +26,8 @@ describe('legacy WordPress redirects', () => {
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/'))).toBeNull();
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/?page_id=99999'))).toBeNull();
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/?notrack'))).toBeNull();
+		expect(legacyRedirect(u('https://stovnerfrisbee.no/?page_id=constructor'))).toBeNull();
+		expect(legacyRedirect(u('https://stovnerfrisbee.no/?page_id=__proto__'))).toBeNull();
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/banene?page_id=1302'))).toBeNull();
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/wp-content/uploads/2017/04/annet.pdf'))).toBeNull();
 		expect(legacyRedirect(u('https://stovnerfrisbee.no/%E0%A4%A'))).toBeNull();

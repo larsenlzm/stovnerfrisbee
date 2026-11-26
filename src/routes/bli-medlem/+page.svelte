@@ -81,7 +81,7 @@
 					{ title: 'Klubbtur og klubbmesterskap', desc: 'Bli med på ekslusiv klubbtur og klubbmesterskap kun for medlemmer.' },
 					{ title: 'Påvirkning', desc: 'Som medlem har du stemmerett på årsmøtet og kan bidra til å forme klubbens fremtid.' },
 					{ title: 'Rabatt på discgolfutstyr', desc: 'Medlemmer får rabatt på discgolfutstyr fra wearediscgolf.' },
-					{ title: 'Lån utstyr fra klubben', desc: 'Klubben har mye utstyr du kan låne, alt fra verktøy, stoler, telt til techdisc.' },
+					{ title: 'Lån utstyr fra klubben', desc: 'Klubben har mye utstyr du kan låne, alt fra verktøy, stoler, telt til TechDisc.' },
 				] as benefit}
 					<li class="flex gap-4">
 						<span class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/15 text-[var(--color-primary)]">

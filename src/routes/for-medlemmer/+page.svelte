@@ -60,14 +60,14 @@
 			</ol>
 			<p class="mt-6 leading-relaxed text-[var(--color-muted)]">
 				Send søknaden til
-				<a href="mailto:{BOARD_EMAIL}?subject=Søknad om reisestøtte" class="text-[var(--color-primary)] hover:underline">{BOARD_EMAIL}</a>.
+				<a href="mailto:{BOARD_EMAIL}?subject={encodeURIComponent('Søknad om reisestøtte')}" class="text-[var(--color-primary)] hover:underline">{BOARD_EMAIL}</a>.
 			</p>
 		</div>
 
 		<div id="utstyr" class="scroll-mt-24">
 			<h2 class="text-xl font-semibold text-[var(--color-text)]">Lån utstyr</h2>
 			<p class="mt-2 leading-relaxed text-[var(--color-muted)]">
-				Klubben har blant annet verktøy, stoler, telt og techdisc som medlemmer kan låne. Spør noen i
+				Klubben har blant annet verktøy, stoler, telt og TechDisc som medlemmer kan låne. Spør noen i
 				<a href="/om-klubben#styret" class="text-[var(--color-primary)] hover:underline">styret</a>, eller send e-post til
 				<a href="mailto:{BOARD_EMAIL}" class="text-[var(--color-primary)] hover:underline">{BOARD_EMAIL}</a>.
 			</p>
@@ -91,7 +91,7 @@
 		<div id="arsmote" class="scroll-mt-24">
 			<h2 class="text-xl font-semibold text-[var(--color-text)]">Årsmøtet</h2>
 			<p class="mt-2 leading-relaxed text-[var(--color-muted)]">
-				Som medlem har du stemmerett på årsmøtet og kan være med på å bestemme hvor klubben skal. Årsmøtet holdes i
+				Som medlem har du stemmerett på årsmøtet og kan være med på å forme klubbens fremtid. Årsmøtet holdes i
 				februar, og innkallingen kommer i desember.
 			</p>
 		</div>
