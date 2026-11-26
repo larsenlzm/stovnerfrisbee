@@ -26,7 +26,7 @@ Arrangementer og styret på nettsiden hentes fra Google-regnearket **Stovner Fri
 | Sluttdato | Nei | Bare for flerdagers arrangement. Ikke før startdato. Tom Sluttdato betyr samme dag |
 | Ukedag | Nei | Nedtrekk, mandag til søndag. Brukes for ukentlige arrangementer |
 | Datotekst | Dato eller Startdato/Sluttdato | Fritekst som vises på siden, for eksempel «Hver tirsdag kl. 18». Tom: siden lager teksten fra datoene |
-| Bane | Nei | For eksempel «Stovner» |
+| Bane | Nei | Må være nøyaktig «Stovner Discgolfpark» eller «Forsheimer DiskGolfPark» (nedtrekk; annen tekst godtas, men gir ingen banestatus). Brukes til status på /banene og forsiden. For at en ukentlig liga skal vises som «spilles i dag», må Kategori inneholde «Ukentlig», og Ukedag, Startdato, Sluttdato og Bane må være satt |
 | Beskrivelse | Ja | Kort tekst om arrangementet |
 | Lenke | Ja | Må starte med `https://` eller `/` |
 | Lenketekst | Ja | Teksten på knappen, for eksempel «Meld deg på» |
@@ -103,10 +103,8 @@ Når en godkjenner krysser av Godkjent på en rad som ikke er gyldig, fjernes kr
 
 Alle endringer lagres. Du kan gå tilbake i tid:
 
-- Hele arket: **Fil → Versjonshistorikk → Se versjonshistorikk**.
-- En enkelt celle: høyreklikk cellen og velg **Vis redigeringshistorikk**.
-
-Rader kan også gjenopprettes fra versjonshistorikken. Husk at en gjenopprettet rad må godkjennes på nytt.
+- En enkelt celle: høyreklikk cellen og velg **Vis redigeringslogg**. Der kan du se tidligere innhold og kopiere det tilbake for hånd. Husk at raden da må godkjennes på nytt.
+- Hele arket (**Fil → Versjonshistorikk**) overlater du til admin. Å gjenopprette en hel versjon ruller også tilbake Publisert-fanene og Hash-kolonnen, og kan gjøre at godkjenninger og publisert innhold ikke lenger stemmer med hverandre.
 
 ## Del 2: Oppsett (admin)
 
@@ -143,6 +141,10 @@ Nettsiden leser det private arket med en tjenestekonto.
 2. Apps Script (neste punkt): legg URL-en inn som Script Property `DEPLOY_HOOK_URL`.
 
 Mangler eller feiler hooken, får godkjenneren en melding i arket, og nettsiden bygges ikke på nytt.
+
+Hooken svarer OK så snart bygget er startet, også hvis bygget feiler etterpå (for eksempel fordi et bilde ligger utenfor den delte mappen). Sørg derfor for at Vercel sender e-post om mislykkede deployer til `admin@stovnerfrisbee.no` (Vercel: Account/Team → Settings → Notifications → Deployment failed). Årsaken står i build-loggen til den mislykkede deployen.
+
+**Build Command** i Vercel (Project → Settings → Build and Deployment) må stå på standard, `npm run build`. Henting fra arket ligger i det kommandoet; overstyres det, hoppes henting fra arket over uten advarsel.
 
 ### 5. Apps Script
 
