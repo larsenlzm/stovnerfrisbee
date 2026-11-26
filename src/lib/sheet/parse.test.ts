@@ -180,7 +180,7 @@ describe('parseBoard', () => {
 		return h.map((k) => m[k]);
 	};
 	it('sorts by order and allows empty email', () => {
-		const { items, warnings } = parseBoard([h, row({ Rekkefølge: 2, Navn: 'B', 'E-post': '' }), row({ Rekkefølge: 1 })]);
+		const { items, warnings } = parseBoard([h, row({ ID: 'b2', Rekkefølge: 2, Navn: 'B', 'E-post': '' }), row({ Rekkefølge: 1 })]);
 		expect(warnings).toEqual([]);
 		expect(items.map((i) => i.name)).toEqual(['Ola', 'B']);
 		expect(items[1].email).toBe('');
@@ -201,6 +201,24 @@ describe('parseBoard', () => {
 		const { items, warnings } = parseBoard([h, row(over)]);
 		expect(items).toEqual([]);
 		expect(warnings).toEqual([`${BOARD_TAB} rad 2 (${over.Navn ?? 'Ola'}): ${msg}`]);
+	});
+	it.each<[string]>([[''], ['../x'], ['a/b'], ['a#b'], ['a?b'], ['a b']])(
+		'skips a row with invalid ID %j',
+		(id) => {
+			const { items, warnings } = parseBoard([h, row({ ID: id })]);
+			expect(items).toEqual([]);
+			expect(warnings).toEqual([`${BOARD_TAB} rad 2 (Ola): Ugyldig ID`]);
+		}
+	);
+	it('skips a row whose ID was used by an earlier valid row', () => {
+		const { items, warnings } = parseBoard([h, row(), row({ Navn: 'B', Rekkefølge: 2 })]);
+		expect(items.map((i) => i.name)).toEqual(['Ola']);
+		expect(warnings).toEqual([`${BOARD_TAB} rad 3 (B): Duplikat ID`]);
+	});
+	it('does not let an invalid row claim its ID', () => {
+		const { items, warnings } = parseBoard([h, row({ Navn: '' }), row({ Navn: 'B' })]);
+		expect(items.map((i) => i.name)).toEqual(['B']);
+		expect(warnings).toHaveLength(1);
 	});
 	it('ignores empty rows', () => {
 		expect(parseBoard([h, [], row()]).warnings).toEqual([]);

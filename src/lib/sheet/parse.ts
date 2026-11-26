@@ -162,10 +162,12 @@ export function parseBoard(rows: Cell[][]): { items: PublishedBoardRow[]; warnin
 	const col = columns(rows, BOARD_COLUMNS, BOARD_TAB);
 	const items: PublishedBoardRow[] = [];
 	const warnings: string[] = [];
+	const usedIds = new Set<string>();
 	for (let i = 1; i < rows.length; i++) {
 		const row = rows[i];
 		if (isEmptyRow(row)) continue;
 		const get = (name: string) => text(row[col.get(name)!]);
+		const id = get('ID');
 		const name = get('Navn');
 		const orderText = get('Rekkefølge');
 		const order = orderText === '' ? NaN : Number(orderText.replace(',', '.'));
@@ -173,17 +175,20 @@ export function parseBoard(rows: Cell[][]): { items: PublishedBoardRow[]; warnin
 		const imageUrl = get('Bilde');
 
 		let problem: string | null = null;
-		if (!Number.isFinite(order)) problem = 'Mangler rekkefølge';
+		if (!/^[\w-]+$/.test(id)) problem = 'Ugyldig ID';
+		else if (!Number.isFinite(order)) problem = 'Mangler rekkefølge';
 		else if (!name) problem = 'Mangler navn';
 		else if (!get('Rolle')) problem = 'Mangler rolle';
 		else if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) problem = 'Ugyldig e-post';
 		else if (!imageUrl) problem = 'Mangler bilde';
 		else if (!driveFileId(imageUrl)) problem = 'Bildet må være en Google Drive-lenke';
+		else if (usedIds.has(id)) problem = 'Duplikat ID';
 		if (problem) {
 			warnings.push(`${BOARD_TAB} rad ${i + 1} (${name}): ${problem}`);
 			continue;
 		}
-		items.push({ id: get('ID'), order, name, role: get('Rolle'), email, imageUrl });
+		usedIds.add(id);
+		items.push({ id, order, name, role: get('Rolle'), email, imageUrl });
 	}
 	items.sort((a, b) => a.order - b.order);
 	return { items, warnings };
