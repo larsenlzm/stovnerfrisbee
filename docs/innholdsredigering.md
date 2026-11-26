@@ -10,6 +10,7 @@ Arrangementer og styret på nettsiden hentes fra Google-regnearket **Stovner Fri
 - En godkjenner (admin eller TD) leser gjennom og krysser av **Godkjent**. Først da blir raden publisert.
 - Etter godkjenning er endringen vanligvis på nettsiden i løpet av et par minutter.
 - Fanene **Publisert – arrangementer** og **Publisert – styret** er det nettsiden leser. De er låst, så ikke prøv å skrive der.
+- Ikke endre navnet på kolonneoverskriftene i rad 1. De er låst, og skriptet finner kolonnene på navnet.
 - Du kan ikke krysse av Godkjent selv. Kolonnene ID, Godkjent, Publisering og Hash er låst for redaktører.
 
 ### Legge til et arrangement
@@ -24,7 +25,7 @@ Arrangementer og styret på nettsiden hentes fra Google-regnearket **Stovner Fri
 | Startdato | Dato eller Datotekst | Velg fra datovelgeren (format `åååå-mm-dd`) |
 | Sluttdato | Nei | Bare for flerdagers arrangement. Ikke før startdato. Tom Sluttdato betyr samme dag |
 | Ukedag | Nei | Nedtrekk, mandag til søndag. Brukes for ukentlige arrangementer |
-| Datotekst | Dato eller Startdato | Fritekst som vises på siden, for eksempel «Hver tirsdag kl. 18». Tom: siden lager teksten fra datoene |
+| Datotekst | Dato eller Startdato/Sluttdato | Fritekst som vises på siden, for eksempel «Hver tirsdag kl. 18». Tom: siden lager teksten fra datoene |
 | Bane | Nei | For eksempel «Stovner» |
 | Beskrivelse | Ja | Kort tekst om arrangementet |
 | Lenke | Ja | Må starte med `https://` eller `/` |
@@ -56,9 +57,9 @@ Skriv over cellen. Står raden allerede på nettsiden, vises den gamle versjonen
 
 ### Fjerne noe
 
-**Å slette raden tar ikke bort noe fra nettsiden.** Det som allerede er publisert blir stående.
+**Slett aldri rader.** Å slette en rad tar ikke bort noe fra nettsiden, og det som allerede er publisert blir stående. (Beskyttelsen i arket kan også hindre deg i å slette raden.) Legger du raden inn på nytt, får den ny ID og blir en ekstra oppføring, mens den gamle blir stående.
 
-For å ta noe ned: kryss av **Fjern** på raden, og be en godkjenner krysse av **Godkjent**. Etter bygget er det borte fra nettsiden. Raden kan stå i arket, eller du kan slette den etterpå.
+For å ta noe ned: kryss av **Fjern** på den opprinnelige raden, og be en godkjenner krysse av **Godkjent**. Etter bygget er det borte fra nettsiden. La raden stå i arket.
 
 ### Status
 
@@ -130,7 +131,7 @@ Nettsiden leser det private arket med en tjenestekonto.
 
 | Variabel | Verdi |
 |---|---|
-| `GOOGLE_SERVICE_ACCOUNT_JSON` | Hele innholdet i JSON-nøkkelen, på én linje |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | Hele innholdet i JSON-nøkkelen, på én linje. Lag den med `jq -c . nøkkel.json` |
 | `CONTENT_SHEET_ID` | ID-en fra arkets URL: `docs.google.com/spreadsheets/d/<ID>/edit` |
 
 - **Vercel**: Project → Settings → Environment Variables. Legg inn begge for alle miljøer (Production, Preview, Development).
@@ -154,15 +155,20 @@ Mangler eller feiler hooken, får godkjenneren en melding i arket, og nettsiden 
 
 `hourlyCheck` rydder opp i rader der godkjenningen ikke stemmer med innholdet.
 
-### 6. Del arket med redaktørene
+### 6. Del arket og bildemappen
 
-Del arket med redaktørene som **Redigerer**. Det går fint med private Gmail-kontoer. Godkjenning avhenger ikke av hvem som redigerer, bare av at kolonnene er beskyttet. Arket skal ikke deles offentlig.
+Del arket med godkjennerne (`td@stovnerfrisbee.no`; `admin@` er eier) og redaktørene som **Redigerer**. Godkjennerne må være delt med **før** du kjører `setup()`, ellers kan beskyttelsene feile.
+
+Del også bildemappen **Nettside – styrebilder** med redaktørene og godkjennerne som **Redigerer**, slik at de kan laste opp bilder.
+
+Redaktørene kan bruke private Gmail-kontoer. Godkjenning avhenger ikke av hvem som redigerer, bare av at kolonnene er beskyttet. Arket skal ikke deles offentlig.
 
 ### Bytte godkjennere
 
-1. Endre `CONFIG.approvers` øverst i `Code.gs` (og i `apps-script/Code.gs` i repoet).
-2. Lim koden inn på nytt i Apps Script.
-3. Kjør `setup()` på nytt, slik at beskyttelsene oppdateres.
+1. Del arket med den nye personen som **Redigerer** (og mappen med bilder). Gjør dette først.
+2. Endre `CONFIG.approvers` øverst i `Code.gs` (og i `apps-script/Code.gs` i repoet).
+3. Lim koden inn på nytt i Apps Script.
+4. Kjør `setup()` på nytt, slik at beskyttelsene oppdateres.
 
 Eier av arket har alltid tilgang til de beskyttede områdene.
 
@@ -170,5 +176,6 @@ Eier av arket har alltid tilgang til de beskyttede områdene.
 
 - **Bygget feiler på Vercel**: Vercel beholder forrige versjon, så nettsiden er trygg. Åpne build-loggen og les den norske feilmeldingen. Vanlige årsaker: miljøvariablene mangler, arket er ikke delt med tjenestekontoen, en kolonneoverskrift er endret, et bilde kan ikke lastes ned, eller en Publisert-fane har ingen gyldige rader.
 - **Rader mangler på nettsiden**: Ugyldige rader hoppes over, og bygget skriver `Advarsel:` i loggen, for eksempel `Duplikat ID` eller `Ugyldig ID`. Rett raden og godkjenn på nytt.
+- **Et publisert element mangler arbeidsrad** (raden ble slettet): slett raden med samme ID i den matchende fanen `Publisert – arrangementer` eller `Publisert – styret`. Start så nytt bygg: godkjenn en annen endring (det kaller deploy-hooken), eller trykk Redeploy på siste produksjonsdeploy i Vercel.
 - **Prøv lokalt**: `npm run sheet:pull` (med `.env`) henter arket, og skriver advarsler og feil i terminalen. Resultatet havner i `src/lib/data/sheet/` og `static/styret/`. Ikke rediger disse filene for hånd, unntatt i nødsfall.
 - **Teste godkjenningsflyten**: se sjekklisten i `apps-script/README.md`.
