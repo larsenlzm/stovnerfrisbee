@@ -39,11 +39,13 @@ Eier valgte A.
 - `sitemap.xml`: `/reisestotte` byttes med `/for-medlemmer`.
 - Utenfor koden, som styret må gjøre: legge lenken i velkomstmeldingen i Spond og sende en påminnelse før hver sesong.
 
-## Innhold eier må gi
-- Lån utstyr: hva finnes, og hvem kontakter man?
-- Rabatt: hvor stor er den, og hvordan får man den (kode i Spond, si navnet i butikken, …)?
-- Klubbtur og KM: når på året, og hvor kunngjøres det?
-- Årsmøtet: når på året, og hvor kommer innkallingen?
+## Innhold (fra eier)
+- **Lån utstyr:** klubben har blant annet verktøy, stoler, telt og techdisc. Spør noen i styret (lenke til `/om-klubben#styret`) eller send e-post til styret@stovnerfrisbee.no.
+- **Rabatt:** si at du er medlem i Stovner Frisbeeklubb ved kassen i den fysiske butikken til wearediscgolf. Rabattens størrelse oppgis ikke.
+- **Klubbtur og klubbmesterskap:** kunngjøres i Spond.
+- **Årsmøtet:** holdes i februar, og innkallingen kommer i desember.
+
+Styret-seksjonen på «Om klubben» får `id="styret"` så den kan lenkes til.
 
 ## Overlatt til den som bygger
 - Den nøyaktige ordlyden, innenfor reglene over. Eier godkjenner teksten.
