@@ -97,7 +97,6 @@
 
 			<div class="hidden shrink-0 flex-col items-center md:flex md:w-[190px]">
 				{@render logo('h-[180px] w-[180px]')}
-				<p class="mt-2.5 text-xs uppercase tracking-[0.1em] text-[var(--color-muted)]">Arrangør</p>
 			</div>
 		</section>
 
